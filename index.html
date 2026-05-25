@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Adam Glenn Nicholson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- HOME PAGE SPECIFIC ---- */
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Diagonal amber accent line behind hero */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60%; height: 140%;
+      background: linear-gradient(135deg,
+        transparent 40%,
+        rgba(245,166,35,0.03) 40%,
+        rgba(245,166,35,0.03) 60%,
+        transparent 60%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-top-label {
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 9vw, 120px);
+      font-weight: 900;
+      letter-spacing: 6px;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-shadow:
+        0 0 80px rgba(245,166,35,0.15),
+        0 0 160px rgba(245,166,35,0.08);
+    }
+
+    .hero-titles {
+      font-family: var(--font-mono);
+      font-size: clamp(9px, 1.1vw, 12px);
+      color: var(--grey);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .divider-char { color: var(--amber); }
+
+    .hero-manifesto {
+      margin-bottom: 52px;
+      max-width: 700px;
+    }
+
+    .hero-manifesto blockquote {
+      font-family: var(--font-body);
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 300;
+      color: var(--white);
+      font-style: italic;
+      padding-left: 24px;
+      border-left: 3px solid var(--amber);
+      line-height: 1.5;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    /* HERO SIDE PANEL — right side decoration */
+    .hero-side {
+      position: absolute;
+      right: 0; top: 0;
+      height: 100%;
+      width: 320px;
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 32px;
+      background: rgba(15,26,46,0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-side-row {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(245,166,35,0.08);
+    }
+
+    .hero-side-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .hero-side-key {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey);
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+
+    .hero-side-val {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--amber);
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    .hero-side-val.green { color: var(--green); }
+    .hero-side-val.white { color: var(--white); }
+
+    /* STATS */
+    .stats-section { position: relative; z-index: 1; }
+
+    /* DIVIDER BAND */
+    .divider-band {
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .divider-band-text {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--grey-dim);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .divider-band-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 32px;
+    }
+
+    /* FEATURED CALLOUT — between stats and principles */
+    .featured-callout {
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .callout-left h3 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 3px;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .callout-left h3 span { color: var(--amber); }
+
+    .callout-left p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .callout-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .callout-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .callout-item:hover {
+      border-color: var(--amber);
+    }
+
+    .callout-item-icon {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber);
+      letter-spacing: 2px;
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+
+    .callout-item-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    .callout-item-text strong {
+      color: var(--white);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    /* PRINCIPLES */
+    .principles-section {
+      padding: 80px 0;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-side { display: none; }
+      .featured-callout { grid-template-columns: 1fr; gap: 40px; padding: 48px 40px; }
+      .divider-band { padding: 16px 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 48px 0; }
+      .featured-callout { padding: 40px 20px; }
+      .divider-band { padding: 16px 20px; }
+      .divider-band-text:last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <!-- BOOT SCREEN -->
+  <div id="boot-screen">
+    <div id="boot-text"></div>
+  </div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content" style="opacity:0;">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner container">
+
+        <div class="hero-top-label reveal">
+          <span class="section-label">// OPERATOR PROFILE LOADED</span>
+        </div>
+
+        <div class="reveal">
+          <h1 class="hero-name">ADAM GLENN<br>NICHOLSON</h1>
+        </div>
+
+        <div class="reveal">
+          <p class="hero-titles">
+            <span>PROCESS ENGINEER</span>
+            <span class="divider-char">//</span>
+            <span>PUBLISHED AUTHOR</span>
+            <span class="divider-char">//</span>
+            <span>SYSTEMS ARCHITECT</span>
+            <span class="divider-char">//</span>
+            <span>CONTINUOUS IMPROVEMENT PRACTITIONER</span>
+          </p>
+        </div>
+
+        <div class="hero-manifesto reveal">
+          <blockquote>
+            "I don't fix problems. I eliminate the conditions that create them."
+          </blockquote>
+        </div>
+
+        <div class="hero-ctas reveal">
+          <a href="about.html" class="btn"><span>[ ACCESS PROFILE ]</span></a>
+          <a href="experience.html" class="btn btn-cyan"><span>[ OPERATIONS LOG ]</span></a>
+          <a href="works.html" class="btn"><span>[ PUBLISHED WORKS ]</span></a>
+          <a href="ethics.html" class="btn btn-cyan"><span>[ CODE OF ETHICS ]</span></a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="hero-side">
+        <div class="hero-side-row">
+          <div class="hero-side-key">CURRENT STATUS</div>
+          <div class="hero-side-val green">ACTIVE // OPTIMIZING</div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">DESIGNATION</div>
+          <div class="hero-side-val white">Process Engineer<br>Dal-Tile Corporation</div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">FRAMEWORK</div>
+          <div class="hero-side-val">LSS Black Belt<br>DMAIC // Kaizen</div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">ACADEMIC</div>
+          <div class="hero-side-val">DBA Candidate<br>Edgewood University</div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">PUBLISHED WORKS</div>
+          <div class="hero-side-val white">2 Books // Amazon</div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">DEPLOYED APPS</div>
+          <div class="hero-side-val">3 Built // <span style="color:var(--green)">1 LIVE</span></div>
+        </div>
+        <div class="hero-side-row">
+          <div class="hero-side-key">TERMINAL ACCESS</div>
+          <div class="hero-side-val" style="color:var(--grey);font-size:10px;">CTRL + ` TO OPEN</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section reveal">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="17">0</div>
+          <div class="stat-label">Years of Operational Mastery</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2">0</div>
+          <div class="stat-label">Published Works on CI</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-label">Operational Apps Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number stat-pct" data-target="90">0</div>
+          <div class="stat-label">PM Completion Rate — Built From Zero</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY STRIP -->
+    <section class="philosophy-strip reveal">
+      <p>"Waste is not a cost of doing business. It is a <span>failure of design</span>. Every system has a better version of itself <span>waiting to be found</span>."</p>
+    </section>
+
+    <!-- FEATURED CALLOUT -->
+    <section class="featured-callout">
+      <div class="callout-left reveal">
+        <h3>Built from the <span>floor.</span><br>Engineered from the <span>top.</span></h3>
+        <p>Seventeen years across operations, maintenance, project management, and process engineering — at two of the most demanding manufacturing environments in the industry. Every role built the foundation for the next. None of it was accidental.</p>
+        <div style="margin-top:28px;">
+          <a href="experience.html" class="btn"><span>[ VIEW OPERATIONS LOG ]</span></a>
+        </div>
+      </div>
+      <div class="callout-right reveal">
+        <div class="callout-item">
+          <div class="callout-item-icon">[ 01 ]</div>
+          <div class="callout-item-text">
+            <strong>Beyond the Bottleneck</strong>
+            Engineering a Culture of Excellence — published on Amazon
+          </div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-item-icon">[ 02 ]</div>
+          <div class="callout-item-text">
+            <strong>Legacy by Improvement</strong>
+            A Kaizen Framework for Leaders — published on Amazon
+          </div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-item-icon">[ APP ]</div>
+          <div class="callout-item-text">
+            <strong>Safety Communication App <span style="color:var(--green);font-size:10px;font-family:var(--font-mono);">LIVE</span></strong>
+            Instant accountability. Zero data loss. Deployed at Dal-Tile.
+          </div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-item-icon">[ DBA ]</div>
+          <div class="callout-item-text">
+            <strong>Doctoral Research — Active</strong>
+            Continuous improvement focus. Edgewood University.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER BAND -->
+    <div class="divider-band">
+      <span class="divider-band-text">AGN // PROCESS ENGINEER</span>
+      <div class="divider-band-line"></div>
+      <span class="divider-band-text">LSS BLACK BELT // PUBLISHED AUTHOR // PAST MASTER</span>
+      <div class="divider-band-line"></div>
+      <span class="divider-band-text">ALL SYSTEMS OPERATIONAL</span>
+    </div>
+
+    <!-- OPERATING PRINCIPLES -->
+    <section class="principles-section">
+      <div class="container">
+        <div class="section-label reveal">// OPERATING PRINCIPLES</div>
+        <div class="section-title reveal" style="margin-bottom:32px;">HOW THE <span>WORK</span> GETS DONE</div>
+        <div class="principle-grid">
+          <div class="principle-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="principle-label">[ ASSESS ]</div>
+            <p>Nothing improves until it's understood. Every engagement starts with observation, not assumption. The gap between what a system thinks it does and what it actually does is where every inefficiency lives.</p>
+          </div>
+          <div class="principle-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="principle-label">[ ENGINEER ]</div>
+            <p>Design the system. Define the standard. Remove the variation. Then do it again. Solutions that don't change the underlying design don't change the underlying result.</p>
+          </div>
+          <div class="principle-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="principle-label">[ COMPOUND ]</div>
+            <p>Improvement isn't an event. It's a culture. The goal is a system that gets better without you in the room — one where every improvement creates the conditions for the next one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <!-- TERMINAL -->
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT -->
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-live">ONLINE</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AGN INTERFACE ONLINE.</strong><br>
+          Ask me anything about Adam's background, methodology, or published work.
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle">⬡</button>
+  </div>
+
+  <script src="js/boot.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

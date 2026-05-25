@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // About — Adam Glenn Nicholson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- ABOUT PAGE SPECIFIC ---- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* LEFT — IDENTITY PANEL */
+    .identity-panel {
+      background: var(--panel);
+      padding: 40px 32px;
+      position: relative;
+    }
+
+    .identity-panel-header {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber);
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .identity-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .identity-key {
+      color: var(--grey);
+      min-width: 100px;
+      flex-shrink: 0;
+      font-size: 10px;
+      padding-top: 2px;
+    }
+
+    .identity-val {
+      color: var(--white);
+    }
+
+    .identity-val.amber { color: var(--amber); }
+    .identity-val.green { color: var(--green); }
+    .identity-val.cyan  { color: var(--cyan);  }
+
+    .identity-sub {
+      color: var(--grey);
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .identity-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    /* RIGHT — BIO PANEL */
+    .bio-panel {
+      background: var(--dark-2);
+      padding: 48px 48px;
+    }
+
+    .bio-panel p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .bio-panel p:first-child {
+      font-size: 22px;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .bio-panel p strong,
+    .bio-panel p em {
+      color: var(--amber);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* SKILL NODES */
+    .skills-section {
+      padding: 64px 0;
+    }
+
+    .skill-hex-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .skill-node {
+      background: var(--dark-2);
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .skill-node::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--cyan);
+      transition: width 0.4s ease;
+    }
+
+    .skill-node:hover {
+      background: var(--panel);
+    }
+
+    .skill-node:hover::after {
+      width: 100%;
+    }
+
+    .skill-node-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .skill-node p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--grey);
+      line-height: 2;
+    }
+
+    /* COMMUNITY SECTION */
+    .community-section {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 48px;
+      position: relative;
+      margin: 48px 0;
+    }
+
+    .community-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    }
+
+    .community-header {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber);
+      letter-spacing: 4px;
+      margin-bottom: 24px;
+    }
+
+    .community-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .community-body p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .community-body p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .community-body em {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--amber);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-left: 16px;
+      border-left: 2px solid var(--amber);
+    }
+
+    .community-masonic {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .community-masonic-title {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .community-masonic p {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.9;
+      margin-bottom: 8px;
+    }
+
+    /* CLOSING LINE */
+    .about-closing {
+      text-align: center;
+      padding: 64px 0 48px;
+    }
+
+    .about-closing p {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2.5vw, 24px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1.5;
+    }
+
+    .about-closing p span {
+      color: var(--amber);
+    }
+
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .skill-hex-grid { grid-template-columns: repeat(2, 1fr); }
+      .community-body { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 768px) {
+      .skill-hex-grid { grid-template-columns: 1fr; }
+      .bio-panel { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-cross-h"></div>
+    <div class="cursor-cross-v"></div>
+  </div>
+  <div class="cursor-ring"></div>
+
+  <!-- SCAN LINE -->
+  <div class="scan-line"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="page-header-label">> LOADING OPERATOR PROFILE... CLEARANCE GRANTED</div>
+      <h1>OPERATOR <span>PROFILE</span></h1>
+    </div>
+
+    <div class="container">
+
+      <!-- OPENING PHILOSOPHY -->
+      <div style="padding: 64px 0 0;">
+        <div class="section-label reveal">// OPERATING PHILOSOPHY</div>
+        <div style="max-width: 860px; margin-top: 24px;" class="reveal">
+          <p style="font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 28px); font-weight: 700; color: var(--white); line-height: 1.5; letter-spacing: 1px;">
+            The question I ask at the start of every engagement isn't <span style="color:var(--amber)">"what's broken."</span>
+          </p>
+          <p style="font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 28px); font-weight: 700; color: var(--white); line-height: 1.5; letter-spacing: 1px; margin-top: 8px;">
+            It's <span style="color:var(--amber)">"what does this system think it's supposed to do — and what does it actually do?"</span>
+          </p>
+          <p style="font-family: var(--font-body); font-size: 18px; color: var(--grey); line-height: 1.9; font-weight: 300; margin-top: 28px;">
+            The gap between those two answers is where every inefficiency lives. Close the gap. Redesign the standard. Build in the check. Move to the next constraint.
+          </p>
+          <p style="font-family: var(--font-body); font-size: 18px; color: var(--grey); line-height: 1.9; font-weight: 300; margin-top: 12px;">
+            That's not a methodology learned in a classroom. It's what seventeen years of operational reality proved — and what two published books formalized.
+          </p>
+        </div>
+      </div>
+
+      <!-- IDENTITY + BIO GRID -->
+      <div class="about-grid reveal">
+
+        <!-- LEFT: IDENTITY PANEL -->
+        <div class="identity-panel">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <div class="identity-panel-header">> SYSTEM PROFILE // CLEARANCE: GRANTED</div>
+
+          <div class="identity-row">
+            <div class="identity-key">OPERATOR</div>
+            <div class="identity-val amber">Adam Glenn Nicholson</div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">DESIGNATION</div>
+            <div class="identity-val">Process Engineer</div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">FRAMEWORK</div>
+            <div class="identity-val">Lean Six Sigma<br><span class="identity-sub">Black Belt Certified</span></div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">STATUS</div>
+            <div class="identity-val green">ACTIVE // OPTIMIZING</div>
+          </div>
+
+          <div class="identity-divider"></div>
+
+          <div class="identity-row">
+            <div class="identity-key">BS</div>
+            <div class="identity-val">Industrial Engineering Technology<br><span class="identity-sub">University of Southern Mississippi</span></div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">MS</div>
+            <div class="identity-val">Engineering Management<br><span class="identity-sub">University of Oklahoma</span></div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">DBA</div>
+            <div class="identity-val amber">Business Administration<br><span class="identity-sub">Edgewood University [ACTIVE]</span><br><span class="identity-sub">Research: Continuous Improvement</span></div>
+          </div>
+
+          <div class="identity-divider"></div>
+
+          <div class="identity-row">
+            <div class="identity-key">CERTS</div>
+            <div class="identity-val">LSS Black Belt<br>Google PM Certified<br><span class="identity-sub amber">PMP [In Preparation]</span></div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">MEMBERS</div>
+            <div class="identity-val">IISE // PMI</div>
+          </div>
+
+          <div class="identity-divider"></div>
+
+          <div class="identity-row">
+            <div class="identity-key">PUBLISHED</div>
+            <div class="identity-val amber">2 Works // Amazon</div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">APPS</div>
+            <div class="identity-val">3 Built<br><span class="identity-sub green">1 LIVE</span> // <span class="identity-sub amber">2 ALPHA</span></div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">TECHNICAL</div>
+            <div class="identity-val">SQL // Raspberry Pi<br>SAP CMMS // 3D Print<br>AI Integration</div>
+          </div>
+
+          <div class="identity-row">
+            <div class="identity-key">AI</div>
+            <div class="identity-val cyan">ACTIVE // IISE 2025<br><span class="identity-sub">Dallas Conference</span></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: BIO -->
+        <div class="bio-panel">
+          <p>I came up through the floor.</p>
+          <p>Not through a leadership development program. Not as an analyst looking down at a process from a dashboard. I started in operations and manufacturing and learned what systems look like when they run — and what they look like when they're held together by workarounds nobody remembers creating.</p>
+          <p>Seventeen years later, I engineer the process itself.</p>
+          <p>I hold degrees in <em>Industrial Engineering Technology</em> from the University of Southern Mississippi and <em>Engineering Management</em> from the University of Oklahoma — not as credentials to display, but as frameworks that sharpened how I see operational systems. I'm completing a <em>Doctorate in Business Administration</em> at Edgewood University, with research focused on continuous improvement, because the field deserves rigorous academic inquiry and the rigor makes the operational work better.</p>
+          <p>I hold a <em>Lean Six Sigma Black Belt</em> and am preparing to sit for my PMP — not because I need another certification, but because the standard matters. I am an active member of both the <em>Institute of Industrial and Systems Engineers</em> and the <em>Project Management Institute</em>, and I attend the rooms where the discipline is being shaped. AI integration in operational and engineering practice was a central focus at the IISE Annual Conference in Dallas this year. I was there. I'm paying attention.</p>
+          <p>When existing tools weren't enough, I built new ones. SQL for the data. Raspberry Pi for the prototypes. Three operational applications — one live, two in development — that directly address gaps no off-the-shelf solution was solving.</p>
+          <p>I've also written about it. Twice. <em>Beyond the Bottleneck</em> and <em>Legacy by Improvement</em> aren't academic exercises — they're distilled field knowledge published for practitioners who are doing the work and need frameworks that hold up under real operational pressure.</p>
+          <p>My cumulative purpose — formalized in a Professional Code of Ethics through my doctoral program — is to lead with integrity, elevate others, and ensure that my influence contributes to a culture of trust, accountability, and sustainable performance.</p>
+          <p style="color: var(--white); font-size: 18px; font-weight: 600;">This is what seventeen years of deliberate, compounding improvement looks like.</p>
+        </div>
+
+      </div><!-- end about-grid -->
+
+      <!-- SKILL NODES -->
+      <div class="skills-section">
+        <div class="section-label reveal">// CAPABILITY MATRIX</div>
+        <div class="section-title reveal">OPERATIONAL <span>SKILL NODES</span></div>
+        <div class="skill-hex-grid">
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Process Engineering</div>
+            <p>Workflow Design | Standard Work | Variation Reduction | Constraint Analysis | 3D Print Integration</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Continuous Improvement</div>
+            <p>LSS Black Belt | DMAIC | Kaizen | Root Cause Analysis | 5S | PM System Design</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Maintenance Systems</div>
+            <p>CMMS (SAP) | Predictive Maintenance | Reliability Engineering | PM Plan Development</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Project Management</div>
+            <p>Full Lifecycle | Scope | Schedule | Risk | Google PM Certified | PMP [In Prep]</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Compliance & Trade</div>
+            <p>Foreign Trade Zone Admin | EMS Compliance | Regulatory Navigation | Self-Audit Systems</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Technology & Data</div>
+            <p>SQL | Raspberry Pi | 3D Printing | SAP | AI Integration | Digital Systems Design</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Application Development</div>
+            <p>Operational App Design | Safety Systems | Digital Data Capture | Knowledge Management</p>
+          </div>
+          <div class="skill-node reveal">
+            <div class="skill-node-label">Academic Research</div>
+            <p>Doctoral Candidate | CI Research Focus | Published Author | Applied Framework Development</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMMUNITY SECTION -->
+      <div class="community-section reveal">
+        <div class="bracket-tl"></div>
+        <div class="bracket-br"></div>
+        <div class="community-header">> EXTERNAL OPERATIONS // COMMUNITY & LEADERSHIP</div>
+        <div class="community-body">
+          <div>
+            <p><strong>THE OBLIGATION DOESN'T STOP AT THE FACILITY GATE.</strong></p>
+            <p>Active supporter of the <strong>Shriners Hospitals for Children</strong> — a network that provides world-class medical care to children regardless of their family's ability to pay. An organization built on the principle that capability creates obligation.</p>
+            <em>"If we have the ability to make a difference, we have the responsibility to act on it."</em>
+            <p style="margin-top: 20px;">That is not a value statement written for a website. It is an operating principle. Applied everywhere.</p>
+          </div>
+          <div class="community-masonic">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="community-masonic-title">// MASONIC LODGE — PAST MASTER</div>
+            <p>Not a member — a leader. Elected as the highest-ranking officer of the lodge. Responsible for the ritual, culture, direction, and wellbeing of every brother under that charge.</p>
+            <p>Then stepped down. Continued serving.</p>
+            <p>That is the Masonic model: rise to lead, fulfill the obligation completely, become a resource for those who follow. The same philosophy that governs everything else — build the system, lead with integrity, leave it better than you found it, then let it run without you.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLOSING LINE -->
+      <div class="about-closing reveal">
+        <p>"My leadership must leave systems <span>stronger</span> than I found them."</p>
+      </div>
+
+    </div><!-- end container -->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <!-- TERMINAL OVERLAY -->
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT WIDGET -->
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-live">ONLINE</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AGN INTERFACE ONLINE.</strong><br>
+          Ask me anything about Adam's background, methodology, or published work.
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle">⬡</button>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

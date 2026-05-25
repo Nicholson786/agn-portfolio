@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Experience — Adam Glenn Nicholson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .timeline { position: relative; padding: 64px 0; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 100%;
+      background: linear-gradient(180deg, transparent, var(--amber-dim) 10%, var(--amber-dim) 90%, transparent);
+    }
+    .timeline-intro { max-width: 720px; margin: 0 auto 64px; text-align: center; }
+    .timeline-intro p { font-family: var(--font-body); font-size: 17px; color: var(--grey); line-height: 1.9; font-weight: 300; font-style: italic; }
+
+    .chapter { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; margin-bottom: 80px; align-items: start; }
+
+    /* ODD: content left, meta right */
+    .chapter:nth-child(odd) .chapter-content { grid-column: 1; }
+    .chapter:nth-child(odd) .chapter-node    { grid-column: 2; }
+    .chapter:nth-child(odd) .chapter-meta    { grid-column: 3; }
+
+    /* EVEN: meta left, content right */
+    .chapter:nth-child(even) .chapter-meta    { grid-column: 1; grid-row: 1; text-align: right; }
+    .chapter:nth-child(even) .chapter-node    { grid-column: 2; grid-row: 1; }
+    .chapter:nth-child(even) .chapter-content { grid-column: 3; grid-row: 1; }
+
+    .chapter-node { display: flex; flex-direction: column; align-items: center; padding-top: 8px; position: relative; z-index: 2; }
+    .chapter-node-dot { width: 16px; height: 16px; border: 2px solid var(--amber); background: var(--dark); transform: rotate(45deg); flex-shrink: 0; box-shadow: 0 0 12px rgba(245,166,35,0.5); }
+
+    .chapter-meta { padding: 8px 32px 0; }
+    .chapter-dates { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--amber); letter-spacing: 3px; margin-bottom: 8px; }
+    .chapter-org   { font-family: var(--font-mono); font-size: 13px; color: var(--white); letter-spacing: 1px; margin-bottom: 4px; }
+    .chapter-class { font-family: var(--font-mono); font-size: 10px; color: var(--grey); letter-spacing: 2px; line-height: 1.6; }
+
+    .chapter-content { padding: 0 32px; }
+    .chapter-card { background: var(--panel); border: 1px solid var(--border); padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+    .chapter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); opacity: 0.4; }
+    .chapter-card:hover { border-color: var(--amber); }
+    .chapter-card:hover::before { opacity: 1; }
+
+    .chapter-headline { font-family: var(--font-display); font-size: clamp(12px, 1.4vw, 15px); font-weight: 700; color: var(--amber); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; line-height: 1.4; }
+    .chapter-body { font-family: var(--font-body); font-size: 15px; color: var(--grey); line-height: 1.9; font-weight: 300; margin-bottom: 20px; }
+    .chapter-body strong { color: var(--white); font-weight: 600; }
+    .chapter-body em { color: var(--amber); font-style: normal; }
+
+    .impact-list { list-style: none; margin-top: 16px; }
+    .impact-list li { font-family: var(--font-mono); font-size: 12px; color: var(--grey); padding: 6px 0 6px 20px; border-bottom: 1px solid rgba(245,166,35,0.07); position: relative; line-height: 1.5; }
+    .impact-list li::before { content: '▸'; position: absolute; left: 0; color: var(--amber); }
+    .impact-list li strong { color: var(--white); }
+
+    .certs-section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 32px; }
+    .cert-card { background: var(--dark-2); padding: 32px 24px; text-align: center; position: relative; transition: background 0.3s; }
+    .cert-card:hover { background: var(--panel); }
+    .cert-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: opacity 0.3s; }
+    .cert-card:hover::before { opacity: 1; }
+    .cert-title { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: 3px; margin-bottom: 8px; }
+    .cert-sub { font-family: var(--font-mono); font-size: 11px; color: var(--grey); letter-spacing: 1px; margin-bottom: 16px; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .timeline::before { left: 24px; }
+      .chapter { grid-template-columns: 48px 1fr; grid-template-rows: auto auto; margin-bottom: 48px; }
+      .chapter:nth-child(odd) .chapter-content,
+      .chapter:nth-child(even) .chapter-content { grid-column: 2; grid-row: 2; }
+      .chapter:nth-child(odd) .chapter-meta,
+      .chapter:nth-child(even) .chapter-meta { grid-column: 2; grid-row: 1; text-align: left; padding: 0 0 16px 0; }
+      .chapter:nth-child(odd) .chapter-node,
+      .chapter:nth-child(even) .chapter-node { grid-column: 1; grid-row: 1 / 3; }
+      .chapter-content { padding: 0; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper">
+
+    <div class="page-header">
+      <div class="page-header-label">> ACCESSING OPERATIONS LOG... 2008 — PRESENT</div>
+      <h1>OPERATIONS <span>LOG</span></h1>
+    </div>
+
+    <div class="container">
+      <div class="timeline">
+
+        <div class="timeline-intro reveal">
+          <p>This isn't a work history. It's a record of systems encountered, understood, and improved. Each chapter built the capability required for the next. The arc was not accidental.</p>
+        </div>
+
+        <!-- CHAPTER 1: DAL-TILE OPERATIONS -->
+        <div class="chapter reveal">
+          <div class="chapter-content">
+            <div class="chapter-card">
+              <div class="bracket-tl"></div>
+              <div class="chapter-headline">THE FLOOR IS THE LAB.</div>
+              <div class="chapter-body">
+                <p>Dal-Tile is one of the largest manufacturers of ceramic tile in North America. Eleven years in their operations wasn't a starting point — it was an education that no classroom replicates. I learned to see systems the way they actually run, not the way they're documented.</p>
+                <p style="margin-top:12px;">The gap between standard and actual is where all the real work lives. This is where the continuous improvement instinct was forged. Not taught — <em>proven.</em></p>
+              </div>
+              <ul class="impact-list">
+                <li>Led cross-functional production teams through high-volume manufacturing cycles</li>
+                <li>Identified and eliminated recurring waste patterns across production lines</li>
+                <li>Developed foundational understanding of how large-scale systems behave under constraint</li>
+                <li>Built the operational credibility that every subsequent role would leverage</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chapter-node"><div class="chapter-node-dot"></div></div>
+          <div class="chapter-meta">
+            <div class="chapter-dates">2008 — 2019</div>
+            <div class="chapter-org">Dal-Tile Corporation</div>
+            <div class="chapter-class">OPERATIONS &<br>MANUFACTURING<br><br><span style="color:var(--green)">FOUNDATION BUILT</span></div>
+          </div>
+        </div>
+
+        <!-- CHAPTER 2: DAL-TILE MAINTENANCE -->
+        <div class="chapter reveal">
+          <div class="chapter-meta">
+            <div class="chapter-dates">2019 — 2022</div>
+            <div class="chapter-org">Dal-Tile Corporation</div>
+            <div class="chapter-class">INDUSTRIAL<br>MAINTENANCE<br><br><span style="color:var(--amber)">PROCESS BUILT FROM ZERO</span></div>
+          </div>
+          <div class="chapter-node"><div class="chapter-node-dot"></div></div>
+          <div class="chapter-content">
+            <div class="chapter-card">
+              <div class="bracket-tl"></div>
+              <div class="chapter-headline">IF YOU HAVEN'T BEEN IN THE MACHINE,<br>YOU DON'T UNDERSTAND THE MACHINE.</div>
+              <div class="chapter-body">
+                <p><strong>There was no formal maintenance process. That was the starting condition.</strong></p>
+                <p style="margin-top:12px;">Leading a team of <em>13 technicians</em>, I built one from the ground up. Implemented <em>SAP CMMS</em> as the operational backbone, developed structured maintenance plans across the equipment portfolio, and drove the transition from reactive to predictive maintenance — achieving a sustained <em>90% PM completion rate.</em></p>
+                <p style="margin-top:12px;">Simultaneously led safety culture transformation — researching and deploying new guarding solutions that engineered safer conditions into the environment while shifting the team's mindset to treat safety as an operating priority, not a compliance checkbox.</p>
+              </div>
+              <ul class="impact-list">
+                <li>Built formal maintenance system from <strong>zero</strong> using SAP CMMS</li>
+                <li>Led <strong>13-technician team</strong> through full process transformation</li>
+                <li>Achieved and sustained <strong>90% PM completion rate</strong></li>
+                <li>Researched and deployed new guarding solutions — engineered safety into the environment</li>
+                <li>Shifted team culture: safety as operating philosophy, not regulatory obligation</li>
+                <li>Proved process design changes behavior faster than behavioral programs alone</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHAPTER 3: VALLOUREC -->
+        <div class="chapter reveal">
+          <div class="chapter-content">
+            <div class="chapter-card">
+              <div class="bracket-tl"></div>
+              <div class="chapter-headline">COMPLEXITY IS JUST ANOTHER SYSTEM<br>WAITING TO BE MAPPED.</div>
+              <div class="chapter-body">
+                <p>Vallourec is a French multinational — a world leader in premium tubular solutions for the energy industry. Operating at that scale, in that regulatory environment, with that degree of cross-border complexity, is a different category of challenge.</p>
+                <p style="margin-top:12px;">Entered as Maintenance Planner, moved to Maintenance Supervisor, then transitioned rapidly into dual responsibility as <em>Project Manager</em> and <em>Foreign Trade Zone Administrator</em> — running both simultaneously. FTZ administration at a multinational manufacturer carries real financial and legal consequence if it fails.</p>
+                <p style="margin-top:12px;">Google Project Management certification formalized the project architecture capability the work had already proven.</p>
+              </div>
+              <ul class="impact-list">
+                <li>Promoted through <strong>three distinct roles</strong> in rapid succession — Planner → Supervisor → PM/FTZ Admin</li>
+                <li>Managed full project lifecycle across multiple concurrent initiatives</li>
+                <li>Administered <strong>Foreign Trade Zone compliance</strong> at multinational manufacturing scale</li>
+                <li>Navigated cross-border regulatory frameworks with <strong>zero compliance failures</strong></li>
+                <li>Applied maintenance planning and supervisory experience at international operational scale</li>
+                <li>Built project and compliance infrastructure that held under real operational pressure</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chapter-node"><div class="chapter-node-dot"></div></div>
+          <div class="chapter-meta">
+            <div class="chapter-dates">2022 — 2025</div>
+            <div class="chapter-org">Vallourec</div>
+            <div class="chapter-class">MAINTENANCE PLANNER →<br>MAINTENANCE SUPERVISOR →<br>PROJECT MANAGER //<br>FTZ ADMINISTRATOR<br><br><span style="color:var(--cyan)">COMPLEXITY NAVIGATED</span></div>
+          </div>
+        </div>
+
+        <!-- CHAPTER 4: DAL-TILE PROCESS ENGINEER -->
+        <div class="chapter reveal">
+          <div class="chapter-meta">
+            <div class="chapter-dates">2025 — PRESENT</div>
+            <div class="chapter-org">Dal-Tile Corporation</div>
+            <div class="chapter-class">PROCESS ENGINEER<br><br><span style="color:var(--green)">ACTIVE // OPTIMIZING</span></div>
+          </div>
+          <div class="chapter-node"><div class="chapter-node-dot"></div></div>
+          <div class="chapter-content">
+            <div class="chapter-card">
+              <div class="bracket-tl"></div>
+              <div class="chapter-headline">THEY KNOW WHAT THIS LOOKS LIKE.<br>SO DO I.</div>
+              <div class="chapter-body">
+                <p>Returning to Dal-Tile as a Process Engineer closes a loop that seventeen years of compound experience built. The organization knows what operational excellence at this level looks like. The role is designing it — systematically, measurably, permanently.</p>
+                <p style="margin-top:12px;">Current work integrates everything: floor-level credibility, maintenance system architecture, project management discipline, compliance rigor, published CI frameworks, doctoral research, and tools built to close gaps no existing solution was addressing.</p>
+              </div>
+              <ul class="impact-list">
+                <li>Implemented <strong>in-house 3D printing</strong> capability — reducing part costs while building internal manufacturing capacity</li>
+                <li>Deployed live <strong>Safety Communication App</strong> — instant, leadership-visible, accountable safety reporting</li>
+                <li>Developed <strong>EMS Compliance App</strong> — continuous regulatory transparency and on-demand self-audit capability</li>
+                <li>Developed <strong>Troubleshooting & Knowledge Capture App</strong> — standardizing best practice and preserving institutional expertise digitally</li>
+                <li>Integrating <strong>AI tools</strong> into operational improvement — active IISE member tracking the leading edge of the discipline</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end timeline -->
+
+      <!-- CERTS -->
+      <div class="certs-section">
+        <div class="section-label reveal">// CERTIFICATIONS & MEMBERSHIPS</div>
+        <div class="section-title reveal">CREDENTIALS <span>ON RECORD</span></div>
+        <div class="certs-grid">
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">LSS BLACK BELT</div>
+            <div class="cert-sub">Lean Six Sigma<br>Black Belt</div>
+            <span class="status-badge status-validated">VALIDATED</span>
+          </div>
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">GOOGLE PM</div>
+            <div class="cert-sub">Project Management<br>Professional Certificate</div>
+            <span class="status-badge status-validated">VALIDATED</span>
+          </div>
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">PMP</div>
+            <div class="cert-sub">Project Management<br>Professional</div>
+            <span class="status-badge status-alpha">IN PREPARATION</span>
+          </div>
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">IISE</div>
+            <div class="cert-sub">Institute of Industrial &<br>Systems Engineers</div>
+            <span class="status-badge status-active">ACTIVE MEMBER</span>
+          </div>
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">PMI</div>
+            <div class="cert-sub">Project Management<br>Institute</div>
+            <span class="status-badge status-active">ACTIVE MEMBER</span>
+          </div>
+          <div class="cert-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="cert-title">DBA</div>
+            <div class="cert-sub">Business Administration<br>Edgewood University<br>CI Research Focus</div>
+            <span class="status-badge status-alpha">IN PROGRESS</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-live">ONLINE</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant"><strong>AGN INTERFACE ONLINE.</strong><br>Ask me anything about Adam's background, methodology, or published work.</div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle">⬡</button>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

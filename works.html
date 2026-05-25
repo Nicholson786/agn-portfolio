@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Works — Adam Glenn Nicholson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- WORKS PAGE ---- */
+
+    .works-intro {
+      max-width: 720px;
+      padding: 48px 0 0;
+    }
+
+    .works-intro p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* BOOKS SECTION */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .book-card {
+      background: var(--panel);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .book-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    }
+
+    .book-card:hover {
+      background: var(--panel-2);
+    }
+
+    .book-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber);
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .book-title {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .book-subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--amber);
+      font-style: italic;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .book-publisher {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--grey-dim);
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .book-headline {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .book-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .book-body em {
+      color: var(--white);
+      font-style: italic;
+    }
+
+    /* APPS SECTION */
+    .apps-section {
+      padding: 80px 0;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .app-card {
+      background: var(--dark-2);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .app-card:hover {
+      background: var(--panel);
+    }
+
+    .app-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--cyan);
+      transition: width 0.4s ease;
+    }
+
+    .app-card:hover::after {
+      width: 100%;
+    }
+
+    .app-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--grey-dim);
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .app-name {
+      font-family: var(--font-display);
+      font-size: clamp(13px, 1.5vw, 16px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .app-status-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .app-headline {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .app-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .app-body strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .app-connection {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--amber-dim);
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .books-grid { grid-template-columns: 1fr; }
+      .apps-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html" class="active">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper">
+
+    <div class="page-header">
+      <div class="page-header-label">> ACCESSING PUBLISHED WORKS & DEPLOYED SYSTEMS...</div>
+      <h1>PUBLISHED <span>WORKS</span></h1>
+    </div>
+
+    <div class="container">
+
+      <div class="works-intro reveal">
+        <p>The frameworks came first. Then the tools to operationalize them. What follows is a record of applied knowledge — published, built, and deployed in real operational environments.</p>
+      </div>
+
+      <!-- BOOKS -->
+      <div style="padding-top: 48px;">
+        <div class="section-label reveal">// PUBLISHED LITERATURE</div>
+        <div class="section-title reveal">BOOKS <span>ON RECORD</span></div>
+        <div class="books-grid">
+
+          <div class="book-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="book-number">[ PUBLICATION 001 ] // AMAZON PUBLISHING</div>
+            <div class="book-title">Beyond the<br>Bottleneck</div>
+            <div class="book-subtitle">Engineering a Culture of Excellence</div>
+            <div class="book-publisher">AMAZON PUBLISHING // AVAILABLE NOW</div>
+            <div class="book-headline">THE CONSTRAINT IS NEVER JUST THE MACHINE.</div>
+            <div class="book-body">
+              <p>Every operation has a bottleneck. Most organizations attack it directly — throw resources at it, work around it, accept it as a permanent condition.</p>
+              <p style="margin-top:12px;">This book argues that the bottleneck is a symptom, and that the real work is engineering the culture that either creates constraints or eliminates them.</p>
+              <p style="margin-top:12px;"><em>Beyond the Bottleneck</em> is a practitioner's framework for leaders who are ready to stop managing problems and start designing organizations that outgrow them.</p>
+            </div>
+            <a href="https://www.amazon.com" target="_blank" class="btn"><span>[ ACCESS ON AMAZON ]</span></a>
+          </div>
+
+          <div class="book-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="bracket-br"></div>
+            <div class="book-number">[ PUBLICATION 002 ] // AMAZON PUBLISHING</div>
+            <div class="book-title">Legacy by<br>Improvement</div>
+            <div class="book-subtitle">A Kaizen Framework for Leaders</div>
+            <div class="book-publisher">AMAZON PUBLISHING // AVAILABLE NOW</div>
+            <div class="book-headline">WHAT YOU BUILD SHOULD OUTLAST YOUR PRESENCE IN IT.</div>
+            <div class="book-body">
+              <p>The measure of a leader isn't what runs smoothly while they're in the room. It's what keeps running — and keeps improving — after they leave.</p>
+              <p style="margin-top:12px;">This book is a structured kaizen framework for leaders who want to build organizations that compound: where every improvement creates the conditions for the next one, and the culture of getting better becomes self-sustaining.</p>
+              <p style="margin-top:12px;">The philosophy behind the Troubleshooting App. The framework the maintenance system was built on. Formalized here for operational leaders.</p>
+            </div>
+            <a href="https://www.amazon.com" target="_blank" class="btn"><span>[ ACCESS ON AMAZON ]</span></a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- APPS -->
+      <div class="apps-section">
+        <div class="section-label reveal">// DEPLOYED SYSTEMS</div>
+        <div class="section-title reveal">OPERATIONAL <span>APPLICATIONS</span></div>
+        <div class="apps-grid">
+
+          <div class="app-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="app-number">[ SYSTEM 001 ]</div>
+            <div class="app-name">Safety Communication &<br>Accountability App</div>
+            <div class="app-status-row">
+              <span class="status-badge status-live">LIVE</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
+            </div>
+            <div class="app-headline">SAFETY FAILURES DON'T START WITH ACCIDENTS.<br>THEY START WITH DELAYED COMMUNICATION.</div>
+            <div class="app-body">
+              <p>The gap between a safety observation and leadership awareness is where accountability disappears. This application closes that gap — making safety communication <strong>instant</strong> and ensuring data is captured, visible, and impossible to lose.</p>
+              <p style="margin-top:12px;">The result is not just faster reporting. It's a structural shift in leadership accountability — because when nothing falls through the cracks, there are no cracks to hide behind.</p>
+            </div>
+          </div>
+
+          <div class="app-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="app-number">[ SYSTEM 002 ]</div>
+            <div class="app-name">EMS Compliance &<br>Self-Audit Application</div>
+            <div class="app-status-row">
+              <span class="status-badge status-alpha">ALPHA</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
+            </div>
+            <div class="app-headline">COMPLIANCE IS NOT A ONCE-A-YEAR EVENT.<br>IT IS A CONTINUOUS STATE.</div>
+            <div class="app-body">
+              <p>Federal environmental and regulatory standards don't pause between audits. This application makes compliance <strong>visible on demand</strong> — giving leadership real-time transparency into EMS adherence.</p>
+              <p style="margin-top:12px;">Enables self-auditing so that readiness is a permanent condition, not a pre-inspection scramble. The goal: an external audit finds nothing because the internal system found it first.</p>
+            </div>
+          </div>
+
+          <div class="app-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="app-number">[ SYSTEM 003 ]</div>
+            <div class="app-name">Troubleshooting &<br>Knowledge Capture App</div>
+            <div class="app-status-row">
+              <span class="status-badge status-alpha">ALPHA</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
+            </div>
+            <div class="app-headline">TRIBAL KNOWLEDGE RETIRES.<br>SYSTEMS DON'T HAVE TO.</div>
+            <div class="app-body">
+              <p>Every operation has people who carry decades of expertise in their heads. When they leave, that knowledge goes with them. This application attacks that problem from both directions:</p>
+              <p style="margin-top:12px;">It enforces a <strong>repeatable troubleshooting pathway</strong> so best practice gets defined through consistent action — and it captures the expertise of the most seasoned team members in a structured digital format.</p>
+            </div>
+            <div class="app-connection">// Legacy by Improvement — as a deployed tool</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-live">ONLINE</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant"><strong>AGN INTERFACE ONLINE.</strong><br>Ask me anything about Adam's background, methodology, or published work.</div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle">⬡</button>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
