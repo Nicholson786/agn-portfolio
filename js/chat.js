@@ -1,6 +1,6 @@
 /* ============================================================
    AGN PORTFOLIO — AI CHAT WIDGET
-   Powered by Claude API
+   Direct Anthropic API call — frontend only
    ============================================================ */
 
 const chatToggle   = document.getElementById('chat-toggle');
@@ -9,11 +9,9 @@ const chatMessages = document.getElementById('chat-messages');
 const chatInput    = document.getElementById('chat-input');
 const chatSend     = document.getElementById('chat-send');
 
-if (!chatToggle || !chatWindow) {
-  // Chat elements not found — silent fail
-} else {
+const API_KEY = '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';
 
-  const SYSTEM_PROMPT = `You are an AI interface representing Adam Glenn Nicholson — Process Engineer, Lean Six Sigma Black Belt, published author, doctoral candidate, and operational application developer with 17 years of experience across manufacturing, industrial maintenance, project management, foreign trade zone administration, and process engineering.
+const SYSTEM_PROMPT = `You are an AI interface representing Adam Glenn Nicholson — Process Engineer, Lean Six Sigma Black Belt, published author, doctoral candidate, and operational application developer with 17 years of experience across manufacturing, industrial maintenance, project management, foreign trade zone administration, and process engineering.
 
 Organizations: Dal-Tile Corporation (2008-2022, 2025-present), Vallourec (2022-2025).
 
@@ -27,54 +25,49 @@ Published works: "Beyond the Bottleneck: Engineering a Culture of Excellence" an
 
 Built applications: Safety Communication App (live at Dal-Tile), EMS Compliance App (alpha), Troubleshooting & Knowledge Capture App (alpha).
 
-Leadership & Community: Past Master of a Masonic Lodge — elected highest-ranking officer, responsible for leadership, culture, and direction of the organization. Active supporter of Shriners Hospitals for Children.
+Leadership & Community: Past Master of a Masonic Lodge — elected highest-ranking officer. Active supporter of Shriners Hospitals for Children.
 
-Personal Code of Ethics (adopted through doctoral program, Edgewood University): Core values — Integrity, Respect for People, Accountability, Justice and Fairness, Excellence and Continuous Improvement, Stewardship. Cumulative purpose: "To lead with integrity, elevate others, and ensure that my influence contributes to a culture of trust, accountability, and sustainable performance."
+Personal Code of Ethics: Core values — Integrity, Respect for People, Accountability, Justice and Fairness, Excellence and Continuous Improvement, Stewardship.
 
-Core operating philosophy: eliminate the conditions that create problems. Continuous improvement is not a program — it is how you operate. My leadership must leave systems stronger than I found them.
+Core philosophy: eliminate the conditions that create problems. Continuous improvement is not a program — it is how you operate. My leadership must leave systems stronger than I found them.
 
-You speak in first person as Adam. Confident, direct, technically precise, and grounded in a clear ethical framework. Never desperate. Never job-seeking. You are a practitioner deeply engaged in your craft.
+Speak in first person as Adam. Confident, direct, technically precise. Never job-seeking.
+If asked about availability: "I'm always open to conversations about serious operational challenges. What are you working on?"
+Keep responses to 2-4 sentences unless the question warrants more. No filler.`;
 
-If asked about job availability: "I'm always open to conversations about serious operational challenges. What are you working on?"
-
-Keep responses concise and intelligent. 2-4 sentences max unless a detailed question warrants more. No filler phrases.`;
+if (chatToggle && chatWindow) {
 
   let conversationHistory = [];
 
-  // Toggle chat window
-  chatToggle.addEventListener('click', () => {
-    chatWindow.classList.toggle('open');
-    if (chatWindow.classList.contains('open')) {
-      chatInput && chatInput.focus();
-    }
-  });
-
-  // Send message
   async function sendMessage() {
     const text = chatInput.value.trim();
     if (!text) return;
 
     chatInput.value = '';
     appendMessage(text, 'user');
-
     conversationHistory.push({ role: 'user', content: text });
 
-    // Thinking indicator
     const thinking = appendMessage('...', 'assistant');
 
     try {
       const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type':      'application/json',
+          'x-api-key':         API_KEY,
+          'anthropic-version': '2023-06-01',
+        },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model:      'claude-sonnet-4-20250514',
           max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: conversationHistory,
+          system:     SYSTEM_PROMPT,
+          messages:   conversationHistory,
         }),
       });
 
       const data = await response.json();
+      if (data.error) throw new Error(data.error.message);
+
       const reply = data.content
         .filter(b => b.type === 'text')
         .map(b => b.text)
@@ -99,9 +92,8 @@ Keep responses concise and intelligent. 2-4 sentences max unless a detailed ques
     return div;
   }
 
-  chatSend && chatSend.addEventListener('click', sendMessage);
-  chatInput && chatInput.addEventListener('keydown', (e) => {
+  chatSend  && chatSend.addEventListener('click', sendMessage);
+  chatInput && chatInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') sendMessage();
   });
-
 }
