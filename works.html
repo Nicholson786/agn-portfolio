@@ -3,43 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AGN // Works — Adam Glenn Nicholson</title>
+  <title>AGN // Code of Ethics — Adam Glenn Nicholson</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ---- WORKS PAGE ---- */
+    /* ---- ETHICS PAGE ---- */
 
-    .works-intro {
-      max-width: 720px;
-      padding: 48px 0 0;
+    /* DECRYPT ANIMATION */
+    @keyframes decrypt {
+      0%   { opacity: 0; letter-spacing: 8px; filter: blur(4px); }
+      60%  { opacity: 0.7; letter-spacing: 2px; filter: blur(1px); }
+      100% { opacity: 1; letter-spacing: normal; filter: blur(0); }
     }
 
-    .works-intro p {
-      font-family: var(--font-body);
-      font-size: 17px;
-      color: var(--grey);
-      line-height: 1.9;
-      font-weight: 300;
-      font-style: italic;
+    .decrypt {
+      animation: decrypt 1.2s ease forwards;
+      opacity: 0;
     }
 
-    /* BOOKS SECTION */
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-top: 32px;
-    }
-
-    .book-card {
-      background: var(--panel);
-      padding: 48px 40px;
+    /* CLASSIFICATION HEADER */
+    .classification-block {
+      background: var(--dark-2);
+      border: 1px solid var(--blue);
+      padding: 32px 40px;
+      margin: 48px 0;
       position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
+      font-family: var(--font-mono);
     }
 
-    .book-card::before {
+    .classification-block::before {
       content: '';
       position: absolute;
       top: 0; left: 0;
@@ -47,76 +38,86 @@
       background: linear-gradient(90deg, transparent, var(--blue), transparent);
     }
 
-    .book-card:hover {
-      background: var(--panel-2);
+    .classification-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 8px;
+      font-size: 12px;
     }
 
-    .book-number {
-      font-family: var(--font-mono);
+    .classification-key {
+      color: var(--grey);
+      min-width: 140px;
+      flex-shrink: 0;
       font-size: 10px;
-      color: var(--blue);
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      opacity: 0.7;
+      padding-top: 2px;
+      letter-spacing: 2px;
     }
 
-    .book-title {
+    .classification-val {
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .classification-val.amber { color: var(--blue); }
+    .classification-val.green { color: var(--green); }
+
+    /* OPENING */
+    .ethics-opening {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    .ethics-opening h2 {
       font-family: var(--font-display);
-      font-size: clamp(18px, 2vw, 24px);
+      font-size: clamp(20px, 3vw, 32px);
       font-weight: 900;
       color: var(--white);
       letter-spacing: 2px;
-      text-transform: uppercase;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .book-subtitle {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--blue);
-      font-style: italic;
-      margin-bottom: 24px;
-      font-weight: 300;
-    }
-
-    .book-publisher {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--grey-dim);
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-    }
-
-    .book-headline {
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 3px;
+      line-height: 1.4;
       margin-bottom: 16px;
     }
 
-    .book-body {
+    .ethics-opening h2 span {
+      color: var(--blue);
+    }
+
+    .ethics-opening p {
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 17px;
       color: var(--grey);
       line-height: 1.9;
       font-weight: 300;
-      margin-bottom: 32px;
+      margin-top: 16px;
     }
 
-    .book-body em {
+    /* PURPOSE STATEMENT */
+    .purpose-block {
+      border-left: 3px solid var(--blue);
+      padding: 24px 32px;
+      margin: 48px 0;
+      background: var(--blue-glow2);
+    }
+
+    .purpose-block p {
+      font-family: var(--font-body);
+      font-size: clamp(18px, 2.5vw, 24px);
       color: var(--white);
+      line-height: 1.7;
+      font-weight: 300;
       font-style: italic;
     }
 
-    /* APPS SECTION */
-    .apps-section {
-      padding: 80px 0;
+    .purpose-block p strong {
+      color: var(--blue);
+      font-style: normal;
+      font-weight: 600;
     }
 
-    .apps-grid {
+    /* CORE VALUES GRID */
+    .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
@@ -124,94 +125,234 @@
       margin-top: 32px;
     }
 
-    .app-card {
-      background: var(--dark-2);
+    .value-card {
+      background: var(--panel);
       padding: 36px 28px;
       position: relative;
       overflow: hidden;
       transition: background 0.3s;
     }
 
-    .app-card:hover {
-      background: var(--panel);
-    }
-
-    .app-card::after {
+    .value-card::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--cyan);
-      transition: width 0.4s ease;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--blue);
+      transition: height 0.4s ease;
     }
 
-    .app-card:hover::after {
-      width: 100%;
+    .value-card:hover {
+      background: var(--panel-2);
     }
 
-    .app-number {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--grey-dim);
-      letter-spacing: 3px;
-      margin-bottom: 16px;
+    .value-card:hover::before {
+      height: 100%;
     }
 
-    .app-name {
+    .value-label {
       font-family: var(--font-display);
-      font-size: clamp(13px, 1.5vw, 16px);
+      font-size: 12px;
       font-weight: 700;
-      color: var(--white);
-      letter-spacing: 2px;
+      color: var(--blue);
+      letter-spacing: 4px;
       text-transform: uppercase;
-      line-height: 1.3;
       margin-bottom: 16px;
     }
 
-    .app-status-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .app-headline {
-      font-family: var(--font-display);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--cyan);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-
-    .app-body {
+    .value-card p {
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: 15px;
       color: var(--grey);
       line-height: 1.8;
       font-weight: 300;
     }
 
-    .app-body strong {
+    /* RESPONSIBILITIES */
+    .responsibilities-section {
+      padding: 64px 0;
+    }
+
+    .resp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .resp-card {
+      background: var(--dark-2);
+      padding: 32px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .resp-card:hover {
+      background: var(--panel);
+    }
+
+    .resp-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .resp-list {
+      list-style: none;
+    }
+
+    .resp-list li {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--grey);
+      padding: 6px 0 6px 16px;
+      border-bottom: 1px solid rgba(0,212,255,0.06);
+      position: relative;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .resp-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+    }
+
+    /* DECISION FRAMEWORK */
+    .framework-section {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .protocol-block {
+      background: var(--dark-2);
+      border: 1px solid var(--border-cyan);
+      padding: 40px;
+      margin-top: 32px;
+      position: relative;
+      font-family: var(--font-mono);
+    }
+
+    .protocol-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.4;
+    }
+
+    .protocol-step {
+      display: flex;
+      gap: 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,212,255,0.06);
+      align-items: flex-start;
+    }
+
+    .protocol-step:last-child {
+      border-bottom: none;
+    }
+
+    .protocol-num {
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .protocol-text {
+      font-size: 13px;
+      color: var(--grey);
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+    }
+
+    .protocol-text strong {
       color: var(--white);
+    }
+
+    /* OATH */
+    .oath-section {
+      padding: 80px 0;
+    }
+
+    .oath-block {
+      background: var(--panel);
+      border: 1px solid var(--blue);
+      padding: 60px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(0,170,255, 0.08);
+    }
+
+    .oath-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .oath-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--blue);
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+      opacity: 0.7;
+    }
+
+    .oath-text {
+      font-family: var(--font-body);
+      font-size: clamp(17px, 2vw, 22px);
+      color: var(--white);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto 32px;
+    }
+
+    .oath-text em {
+      color: var(--blue);
+      font-style: normal;
       font-weight: 600;
     }
 
-    .app-connection {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
+    .oath-signature {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 4px;
+      margin-top: 32px;
+    }
+
+    .oath-authenticated {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--blue-dim);
-      letter-spacing: 1px;
-      font-style: italic;
+      color: var(--green);
+      letter-spacing: 3px;
+      margin-top: 16px;
+      opacity: 0.7;
     }
 
     @media (max-width: 900px) {
-      .books-grid { grid-template-columns: 1fr; }
-      .apps-grid  { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .resp-grid   { grid-template-columns: 1fr; }
+      .oath-block  { padding: 40px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .classification-block { padding: 24px 20px; }
     }
   </style>
 </head>
@@ -227,8 +368,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="experience.html">Experience</a></li>
-      <li><a href="works.html" class="active">Works</a></li>
-      <li><a href="ethics.html">Ethics</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html" class="active">Ethics</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
@@ -237,109 +378,199 @@
   <main class="page-wrapper">
 
     <div class="page-header">
-      <div class="page-header-label">> ACCESSING PUBLISHED WORKS & DEPLOYED SYSTEMS...</div>
-      <h1>PUBLISHED <span>WORKS</span></h1>
+      <div class="page-header-label" id="ethics-header-label">> ACCESSING CLASSIFIED DOCUMENT... DECRYPTING...</div>
+      <h1>CODE OF <span>ETHICS</span></h1>
     </div>
 
     <div class="container">
 
-      <div class="works-intro reveal">
-        <p>The frameworks came first. Then the tools to operationalize them. What follows is a record of applied knowledge — published, built, and deployed in real operational environments.</p>
+      <!-- CLASSIFICATION BLOCK -->
+      <div class="classification-block reveal">
+        <div class="bracket-tl"></div>
+        <div class="bracket-br"></div>
+        <div class="classification-row">
+          <div class="classification-key">CLASSIFICATION</div>
+          <div class="classification-val amber">FOUNDATIONAL</div>
+        </div>
+        <div class="classification-row">
+          <div class="classification-key">DOCUMENT</div>
+          <div class="classification-val">Professional Code of Ethics</div>
+        </div>
+        <div class="classification-row">
+          <div class="classification-key">AUTHORED BY</div>
+          <div class="classification-val">Adam G. Nicholson</div>
+        </div>
+        <div class="classification-row">
+          <div class="classification-key">PROGRAM</div>
+          <div class="classification-val">BUS 902: Business Ethics & Sustainability</div>
+        </div>
+        <div class="classification-row">
+          <div class="classification-key">INSTITUTION</div>
+          <div class="classification-val">Edgewood University</div>
+        </div>
+        <div class="classification-row">
+          <div class="classification-key">STATUS</div>
+          <div class="classification-val green">ADOPTED // ACTIVE // LIVED</div>
+        </div>
       </div>
 
-      <!-- BOOKS -->
-      <div style="padding-top: 48px;">
-        <div class="section-label reveal">// PUBLISHED LITERATURE</div>
-        <div class="section-title reveal">BOOKS <span>ON RECORD</span></div>
-        <div class="books-grid">
+      <!-- OPENING STATEMENT -->
+      <div class="ethics-opening reveal">
+        <h2>A code of ethics written for a doctoral program<br>could be an <span>academic exercise.</span></h2>
+        <h2 style="margin-top:8px;">This one is <span>not.</span></h2>
+        <p>Every principle on this page has a corresponding record — a team led, a system built, a standard held under pressure, a community served. This code was not written to describe who I intend to become. It was written to formalize who I already am.</p>
+      </div>
 
-          <div class="book-card reveal">
+      <!-- PURPOSE STATEMENT -->
+      <div class="purpose-block reveal">
+        <p>"My cumulative purpose is to <strong>lead with integrity</strong>, <strong>elevate others</strong>, and ensure that my influence contributes to a culture of <strong>trust, accountability, and sustainable performance</strong>."</p>
+      </div>
+
+      <!-- CORE VALUES -->
+      <div style="padding: 16px 0 0;">
+        <div class="section-label reveal">// CORE LEADERSHIP VALUES</div>
+        <div class="section-title reveal">FOUNDATIONAL <span>PRINCIPLES</span></div>
+        <div class="values-grid">
+
+          <div class="value-card reveal">
             <div class="bracket-tl"></div>
-            <div class="bracket-br"></div>
-            <div class="book-number">[ PUBLICATION 001 ] // AMAZON PUBLISHING</div>
-            <div class="book-title">Beyond the<br>Bottleneck</div>
-            <div class="book-subtitle">Engineering a Culture of Excellence</div>
-            <div class="book-publisher">AMAZON PUBLISHING // AVAILABLE NOW</div>
-            <div class="book-headline">THE CONSTRAINT IS NEVER JUST THE MACHINE.</div>
-            <div class="book-body">
-              <p>Every operation has a bottleneck. Most organizations attack it directly — throw resources at it, work around it, accept it as a permanent condition.</p>
-              <p style="margin-top:12px;">This book argues that the bottleneck is a symptom, and that the real work is engineering the culture that either creates constraints or eliminates them.</p>
-              <p style="margin-top:12px;"><em>Beyond the Bottleneck</em> is a practitioner's framework for leaders who are ready to stop managing problems and start designing organizations that outgrow them.</p>
-            </div>
-            <a href="https://www.amazon.com" target="_blank" class="btn"><span>[ ACCESS ON AMAZON ]</span></a>
+            <div class="value-label">[ INTEGRITY ]</div>
+            <p>I will lead with honesty, transparency, and consistency. My decisions will be set firmly upon a foundation of truth, even when the truth is inconvenient or costly.</p>
           </div>
 
-          <div class="book-card reveal">
+          <div class="value-card reveal">
             <div class="bracket-tl"></div>
-            <div class="bracket-br"></div>
-            <div class="book-number">[ PUBLICATION 002 ] // AMAZON PUBLISHING</div>
-            <div class="book-title">Legacy by<br>Improvement</div>
-            <div class="book-subtitle">A Kaizen Framework for Leaders</div>
-            <div class="book-publisher">AMAZON PUBLISHING // AVAILABLE NOW</div>
-            <div class="book-headline">WHAT YOU BUILD SHOULD OUTLAST YOUR PRESENCE IN IT.</div>
-            <div class="book-body">
-              <p>The measure of a leader isn't what runs smoothly while they're in the room. It's what keeps running — and keeps improving — after they leave.</p>
-              <p style="margin-top:12px;">This book is a structured kaizen framework for leaders who want to build organizations that compound: where every improvement creates the conditions for the next one, and the culture of getting better becomes self-sustaining.</p>
-              <p style="margin-top:12px;">The philosophy behind the Troubleshooting App. The framework the maintenance system was built on. Formalized here for operational leaders.</p>
-            </div>
-            <a href="https://www.amazon.com" target="_blank" class="btn"><span>[ ACCESS ON AMAZON ]</span></a>
+            <div class="value-label">[ RESPECT FOR PEOPLE ]</div>
+            <p>I will recognize the dignity of every individual. I will create environments where people feel valued, heard, and empowered to make their contributions.</p>
+          </div>
+
+          <div class="value-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="value-label">[ ACCOUNTABILITY ]</div>
+            <p>I will take ownership of the outcomes of my decisions and the culture I am responsible for helping to create. I will openly claim responsibility for my mistakes and will take actions to correct them.</p>
+          </div>
+
+          <div class="value-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="value-label">[ JUSTICE & FAIRNESS ]</div>
+            <p>I will strive for equal treatment, decision-making without bias, and ethical consistency across all levels of the organization.</p>
+          </div>
+
+          <div class="value-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="value-label">[ EXCELLENCE & CI ]</div>
+            <p>I will pursue disciplined execution, strict operational rigor, and a commitment to ongoing learning. I expect the same commitment from myself that I ask of others.</p>
+          </div>
+
+          <div class="value-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="value-label">[ STEWARDSHIP ]</div>
+            <p>I will act as a responsible steward of organizational resources, people, and trust. My leadership must leave systems stronger than I found them.</p>
           </div>
 
         </div>
       </div>
 
-      <!-- APPS -->
-      <div class="apps-section">
-        <div class="section-label reveal">// DEPLOYED SYSTEMS</div>
-        <div class="section-title reveal">OPERATIONAL <span>APPLICATIONS</span></div>
-        <div class="apps-grid">
+      <!-- RESPONSIBILITIES -->
+      <div class="responsibilities-section">
+        <div class="section-label reveal">// PROFESSIONAL RESPONSIBILITIES</div>
+        <div class="section-title reveal">OBLIGATIONS <span>ON RECORD</span></div>
+        <div class="resp-grid">
 
-          <div class="app-card reveal">
-            <div class="bracket-tl"></div>
-            <div class="app-number">[ SYSTEM 001 ]</div>
-            <div class="app-name">Safety Communication &<br>Accountability App</div>
-            <div class="app-status-row">
-              <span class="status-badge status-live">LIVE</span>
-              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
-            </div>
-            <div class="app-headline">SAFETY FAILURES DON'T START WITH ACCIDENTS.<br>THEY START WITH DELAYED COMMUNICATION.</div>
-            <div class="app-body">
-              <p>The gap between a safety observation and leadership awareness is where accountability disappears. This application closes that gap — making safety communication <strong>instant</strong> and ensuring data is captured, visible, and impossible to lose.</p>
-              <p style="margin-top:12px;">The result is not just faster reporting. It's a structural shift in leadership accountability — because when nothing falls through the cracks, there are no cracks to hide behind.</p>
-            </div>
+          <div class="resp-card reveal">
+            <div class="resp-title">TO THE ORGANIZATION</div>
+            <ul class="resp-list">
+              <li>Uphold ethical standards, even under pressure to compromise</li>
+              <li>Promote a culture of safety, quality, and continuous improvement</li>
+              <li>Protect confidential information and organizational assets</li>
+              <li>Challenge decisions or behaviors that undermine integrity or long-term sustainability</li>
+            </ul>
           </div>
 
-          <div class="app-card reveal">
-            <div class="bracket-tl"></div>
-            <div class="app-number">[ SYSTEM 002 ]</div>
-            <div class="app-name">EMS Compliance &<br>Self-Audit Application</div>
-            <div class="app-status-row">
-              <span class="status-badge status-alpha">ALPHA</span>
-              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
-            </div>
-            <div class="app-headline">COMPLIANCE IS NOT A ONCE-A-YEAR EVENT.<br>IT IS A CONTINUOUS STATE.</div>
-            <div class="app-body">
-              <p>Federal environmental and regulatory standards don't pause between audits. This application makes compliance <strong>visible on demand</strong> — giving leadership real-time transparency into EMS adherence.</p>
-              <p style="margin-top:12px;">Enables self-auditing so that readiness is a permanent condition, not a pre-inspection scramble. The goal: an external audit finds nothing because the internal system found it first.</p>
-            </div>
+          <div class="resp-card reveal">
+            <div class="resp-title">TO EMPLOYEES & TEAMS</div>
+            <ul class="resp-list">
+              <li>Model the behaviors expected of others</li>
+              <li>Provide clarity, coaching, and support to help individuals grow</li>
+              <li>Ensure fairness in opportunities, workload, and recognition</li>
+              <li>Build psychological safety so employees can speak up, innovate, and learn</li>
+            </ul>
           </div>
 
-          <div class="app-card reveal">
-            <div class="bracket-tl"></div>
-            <div class="app-number">[ SYSTEM 003 ]</div>
-            <div class="app-name">Troubleshooting &<br>Knowledge Capture App</div>
-            <div class="app-status-row">
-              <span class="status-badge status-alpha">ALPHA</span>
-              <span style="font-family:var(--font-mono);font-size:10px;color:var(--grey);letter-spacing:1px;">DAL-TILE CORP</span>
-            </div>
-            <div class="app-headline">TRIBAL KNOWLEDGE RETIRES.<br>SYSTEMS DON'T HAVE TO.</div>
-            <div class="app-body">
-              <p>Every operation has people who carry decades of expertise in their heads. When they leave, that knowledge goes with them. This application attacks that problem from both directions:</p>
-              <p style="margin-top:12px;">It enforces a <strong>repeatable troubleshooting pathway</strong> so best practice gets defined through consistent action — and it captures the expertise of the most seasoned team members in a structured digital format.</p>
-            </div>
-            <div class="app-connection">// Legacy by Improvement — as a deployed tool</div>
+          <div class="resp-card reveal">
+            <div class="resp-title">TO COLLEAGUES & PARTNERS</div>
+            <ul class="resp-list">
+              <li>Collaborate with professionalism and respect</li>
+              <li>Communicate openly, directly, and constructively</li>
+              <li>Address conflict with maturity and commitment to shared goals</li>
+              <li>Support alignment between departments to strengthen organizational performance</li>
+            </ul>
           </div>
 
+          <div class="resp-card reveal">
+            <div class="resp-title">TO CLIENTS, CUSTOMERS & THE PUBLIC</div>
+            <ul class="resp-list">
+              <li>Deliver reliable, quality work that reflects the organization's values</li>
+              <li>Consider the broader societal and environmental impact of decisions</li>
+              <li>Represent the organization with professionalism and honesty</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DECISION FRAMEWORK -->
+      <div class="framework-section">
+        <div class="section-label reveal">// DECISION PROTOCOL</div>
+        <div class="section-title reveal">ETHICAL <span>DECISION-MAKING FRAMEWORK</span></div>
+        <div class="protocol-block reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <div style="font-size:10px;color:var(--cyan);letter-spacing:3px;margin-bottom:24px;">ETHICAL DECISION PROTOCOL // ACTIVE</div>
+
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 01</div>
+            <div class="protocol-text"><strong>Define the issue.</strong> Identify all stakeholders.</div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 02</div>
+            <div class="protocol-text"><strong>Examine</strong> relevant values, policies, and professional standards.</div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 03</div>
+            <div class="protocol-text"><strong>Evaluate options</strong> using moral reasoning — consider both immediate and long-term impacts.</div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 04</div>
+            <div class="protocol-text"><strong>Seek counsel</strong> from trusted mentors, leaders, or ethical resources when uncertainty exists.</div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 05</div>
+            <div class="protocol-text"><strong>Act with integrity.</strong> Choose the option that best aligns with ethical principles and respect for people.</div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-num">STEP 06</div>
+            <div class="protocol-text"><strong>Reflect</strong> on the outcome to strengthen future judgment and leadership maturity.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEADERSHIP OATH -->
+      <div class="oath-section">
+        <div class="section-label reveal">// LEADERSHIP OATH</div>
+        <div class="oath-block reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-tr"></div>
+          <div class="bracket-bl"></div>
+          <div class="bracket-br"></div>
+          <div class="oath-label">LEADERSHIP OATH // ON RECORD</div>
+          <div class="oath-text">
+            "By adopting this code, I affirm my commitment to lead with <em>integrity</em>, <em>courage</em>, and <em>accountability</em>. My influence must elevate others, strengthen the organization, and contribute to a culture where ethical behavior is the norm and not the exception.
+            <br><br>
+            This code represents not only how I lead today, but the standard I hold myself to as I grow into greater responsibility and broader organizational impact."
+          </div>
+          <div class="oath-signature">— ADAM G. NICHOLSON</div>
+          <div class="oath-authenticated">> DOCUMENT AUTHENTICATED // SIGNATURE ON FILE</div>
         </div>
       </div>
 
@@ -373,10 +604,10 @@
     <div class="chat-window" id="chat-window">
       <div class="chat-header">
         <span>// AGN AI INTERFACE</span>
-        <span class="status-badge status-live">ONLINE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
       </div>
       <div class="chat-messages" id="chat-messages">
-        <div class="chat-message assistant"><strong>AGN INTERFACE ONLINE.</strong><br>Ask me anything about Adam's background, methodology, or published work.</div>
+        <div class="chat-message assistant"><strong>AI INTERFACE — IN DEVELOPMENT</strong><br>Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a></div>
       </div>
       <div class="chat-input-row">
         <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
