@@ -13,7 +13,7 @@
       top: 0; left: 50%;
       transform: translateX(-50%);
       width: 1px; height: 100%;
-      background: linear-gradient(180deg, transparent, var(--amber-dim) 10%, var(--amber-dim) 90%, transparent);
+      background: linear-gradient(180deg, transparent, var(--blue-dim) 10%, var(--blue-dim) 90%, transparent);
     }
     .timeline-intro { max-width: 720px; margin: 0 auto 64px; text-align: center; }
     .timeline-intro p { font-family: var(--font-body); font-size: 17px; color: var(--grey); line-height: 1.9; font-weight: 300; font-style: italic; }
@@ -31,27 +31,27 @@
     .chapter:nth-child(even) .chapter-content { grid-column: 3; grid-row: 1; }
 
     .chapter-node { display: flex; flex-direction: column; align-items: center; padding-top: 8px; position: relative; z-index: 2; }
-    .chapter-node-dot { width: 16px; height: 16px; border: 2px solid var(--amber); background: var(--dark); transform: rotate(45deg); flex-shrink: 0; box-shadow: 0 0 12px rgba(245,166,35,0.5); }
+    .chapter-node-dot { width: 16px; height: 16px; border: 2px solid var(--blue); background: var(--dark); transform: rotate(45deg); flex-shrink: 0; box-shadow: 0 0 12px rgba(0,170,255,0.5); }
 
     .chapter-meta { padding: 8px 32px 0; }
-    .chapter-dates { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--amber); letter-spacing: 3px; margin-bottom: 8px; }
+    .chapter-dates { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: 3px; margin-bottom: 8px; }
     .chapter-org   { font-family: var(--font-mono); font-size: 13px; color: var(--white); letter-spacing: 1px; margin-bottom: 4px; }
     .chapter-class { font-family: var(--font-mono); font-size: 10px; color: var(--grey); letter-spacing: 2px; line-height: 1.6; }
 
     .chapter-content { padding: 0 32px; }
     .chapter-card { background: var(--panel); border: 1px solid var(--border); padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s; }
-    .chapter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); opacity: 0.4; }
-    .chapter-card:hover { border-color: var(--amber); }
+    .chapter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--blue); opacity: 0.4; }
+    .chapter-card:hover { border-color: var(--blue); }
     .chapter-card:hover::before { opacity: 1; }
 
-    .chapter-headline { font-family: var(--font-display); font-size: clamp(12px, 1.4vw, 15px); font-weight: 700; color: var(--amber); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; line-height: 1.4; }
+    .chapter-headline { font-family: var(--font-display); font-size: clamp(12px, 1.4vw, 15px); font-weight: 700; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; line-height: 1.4; }
     .chapter-body { font-family: var(--font-body); font-size: 15px; color: var(--grey); line-height: 1.9; font-weight: 300; margin-bottom: 20px; }
     .chapter-body strong { color: var(--white); font-weight: 600; }
-    .chapter-body em { color: var(--amber); font-style: normal; }
+    .chapter-body em { color: var(--blue); font-style: normal; }
 
     .impact-list { list-style: none; margin-top: 16px; }
     .impact-list li { font-family: var(--font-mono); font-size: 12px; color: var(--grey); padding: 6px 0 6px 20px; border-bottom: 1px solid rgba(245,166,35,0.07); position: relative; line-height: 1.5; }
-    .impact-list li::before { content: '▸'; position: absolute; left: 0; color: var(--amber); }
+    .impact-list li::before { content: '▸'; position: absolute; left: 0; color: var(--blue); }
     .impact-list li strong { color: var(--white); }
 
     .certs-section { padding: 64px 0; border-top: 1px solid var(--border); }
@@ -141,25 +141,23 @@
           <div class="chapter-meta">
             <div class="chapter-dates">2019 — 2022</div>
             <div class="chapter-org">Dal-Tile Corporation</div>
-            <div class="chapter-class">INDUSTRIAL<br>MAINTENANCE<br><br><span style="color:var(--amber)">PROCESS BUILT FROM ZERO</span></div>
+            <div class="chapter-class">INDUSTRIAL<br>MAINTENANCE<br><br><span style="color:var(--blue)">TECHNICAL FOUNDATION DEEPENED</span></div>
           </div>
           <div class="chapter-node"><div class="chapter-node-dot"></div></div>
           <div class="chapter-content">
             <div class="chapter-card">
               <div class="bracket-tl"></div>
-              <div class="chapter-headline">IF YOU HAVEN'T BEEN IN THE MACHINE,<br>YOU DON'T UNDERSTAND THE MACHINE.</div>
+              <div class="chapter-headline">YOU LEARN A MACHINE BY TAKING IT APART.</div>
               <div class="chapter-body">
-                <p><strong>There was no formal maintenance process. That was the starting condition.</strong></p>
-                <p style="margin-top:12px;">Leading a team of <em>13 technicians</em>, I built one from the ground up. Implemented <em>SAP CMMS</em> as the operational backbone, developed structured maintenance plans across the equipment portfolio, and drove the transition from reactive to predictive maintenance — achieving a sustained <em>90% PM completion rate.</em></p>
-                <p style="margin-top:12px;">Simultaneously led safety culture transformation — researching and deploying new guarding solutions that engineered safer conditions into the environment while shifting the team's mindset to treat safety as an operating priority, not a compliance checkbox.</p>
+                <p>Before you can engineer a system, you have to understand it from the inside — not the documentation version, the real one. Three years as an industrial maintenance technician meant diagnosing failures under time pressure, repairing equipment correctly the first time, and knowing the machines well enough to predict where they'd fail next.</p>
+                <p style="margin-top:12px;">This wasn't theoretical. This was <em>hands on the equipment</em> — troubleshooting root causes, coordinating spare parts to minimize downtime, and working directly with operations to keep production moving without sacrificing the repair quality that prevents the next breakdown.</p>
               </div>
               <ul class="impact-list">
-                <li>Built formal maintenance system from <strong>zero</strong> using SAP CMMS</li>
-                <li>Led <strong>13-technician team</strong> through full process transformation</li>
-                <li>Achieved and sustained <strong>90% PM completion rate</strong></li>
-                <li>Researched and deployed new guarding solutions — engineered safety into the environment</li>
-                <li>Shifted team culture: safety as operating philosophy, not regulatory obligation</li>
-                <li>Proved process design changes behavior faster than behavioral programs alone</li>
+                <li>Diagnosed and repaired equipment failures across the production floor</li>
+                <li>Built deep mechanical and technical knowledge of the equipment portfolio</li>
+                <li>Coordinated spare parts management to minimize downtime impact</li>
+                <li>Worked cross-functionally with operations to balance uptime with repair integrity</li>
+                <li>Developed the technical foundation that would later inform formal maintenance system design</li>
               </ul>
             </div>
           </div>
@@ -173,16 +171,17 @@
               <div class="chapter-headline">COMPLEXITY IS JUST ANOTHER SYSTEM<br>WAITING TO BE MAPPED.</div>
               <div class="chapter-body">
                 <p>Vallourec is a French multinational — a world leader in premium tubular solutions for the energy industry. Operating at that scale, in that regulatory environment, with that degree of cross-border complexity, is a different category of challenge.</p>
-                <p style="margin-top:12px;">Entered as Maintenance Planner, moved to Maintenance Supervisor, then transitioned rapidly into dual responsibility as <em>Project Manager</em> and <em>Foreign Trade Zone Administrator</em> — running both simultaneously. FTZ administration at a multinational manufacturer carries real financial and legal consequence if it fails.</p>
-                <p style="margin-top:12px;">Google Project Management certification formalized the project architecture capability the work had already proven.</p>
+                <p style="margin-top:12px;"><strong>There was no formal maintenance process. That was the starting condition.</strong> Entering as Maintenance Planner and moving into Maintenance Supervisor, I built one from the ground up — leading a team of <em>13 technicians</em>, implementing <em>SAP CMMS</em> as the operational backbone, and driving the transition from reactive to predictive maintenance to a sustained <em>90% PM completion rate.</em></p>
+                <p style="margin-top:12px;">Simultaneously led safety culture transformation — researching and deploying new guarding solutions that engineered safer conditions into the environment while shifting the team's mindset to treat safety as an operating priority, not a compliance checkbox.</p>
+                <p style="margin-top:12px;">From there, transitioned rapidly into dual responsibility as <em>Project Manager</em> and <em>Foreign Trade Zone Administrator</em> — running both simultaneously. FTZ administration at a multinational manufacturer carries real financial and legal consequence if it fails. Google Project Management certification formalized the project architecture capability the work had already proven.</p>
               </div>
               <ul class="impact-list">
+                <li>Built formal maintenance system from <strong>zero</strong> using SAP CMMS</li>
+                <li>Led <strong>13-technician team</strong> through full process transformation</li>
+                <li>Achieved and sustained <strong>90% PM completion rate</strong></li>
+                <li>Researched and deployed new guarding solutions — engineered safety into the environment</li>
                 <li>Promoted through <strong>three distinct roles</strong> in rapid succession — Planner → Supervisor → PM/FTZ Admin</li>
-                <li>Managed full project lifecycle across multiple concurrent initiatives</li>
-                <li>Administered <strong>Foreign Trade Zone compliance</strong> at multinational manufacturing scale</li>
-                <li>Navigated cross-border regulatory frameworks with <strong>zero compliance failures</strong></li>
-                <li>Applied maintenance planning and supervisory experience at international operational scale</li>
-                <li>Built project and compliance infrastructure that held under real operational pressure</li>
+                <li>Administered <strong>Foreign Trade Zone compliance</strong> at multinational manufacturing scale with <strong>zero compliance failures</strong></li>
               </ul>
             </div>
           </div>
