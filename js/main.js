@@ -300,9 +300,10 @@ if (pageTransition) {
           return;
         }
         pageTransition.classList.remove('revealed');
+        pageTransition.classList.add('flash');
         setTimeout(() => {
           window.location.href = href;
-        }, 480);
+        }, 190);
       });
     }
   });
