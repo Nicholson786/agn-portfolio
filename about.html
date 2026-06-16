@@ -279,6 +279,96 @@
       .skill-hex-grid { grid-template-columns: 1fr; }
       .bio-panel { padding: 32px 24px; }
     }
+    /* EDUCATION LOG */
+    .edu-section {
+      padding: 64px 0 16px;
+    }
+
+    .edu-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .edu-card {
+      background: var(--panel);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--blue);
+      opacity: 0.45;
+    }
+
+    .edu-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .edu-org {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .edu-degree {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .edu-dates {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+
+    .edu-headline {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .edu-body {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .edu-body strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .edu-card { padding: 22px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -439,6 +529,65 @@
         </div>
 
       </div><!-- end about-grid -->
+
+      <!-- EDUCATION LOG -->
+      <div class="edu-section">
+        <div class="section-label reveal">// ACADEMIC FOUNDATION</div>
+        <div class="section-title reveal">EDUCATION <span>LOG</span></div>
+        <div class="edu-stack">
+
+          <div class="edu-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="edu-card-header">
+              <div class="edu-org">Connors State College</div>
+              <div class="edu-dates">2021 — 2022</div>
+            </div>
+            <div class="edu-degree">Associate in Arts</div>
+            <div class="edu-headline">FOUNDATIONS DON'T EXPIRE. THEY GET REVISITED.</div>
+            <div class="edu-body">
+              <p>The general academic foundation underneath everything that followed — completed thirteen years into an operations and maintenance career already underway, because the credential mattered enough to go back for it. Served as <strong>Coordinator for Phi Theta Kappa</strong>, the international honor society for two-year colleges. Leadership showing up early, and showing up often.</p>
+            </div>
+          </div>
+
+          <div class="edu-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="edu-card-header">
+              <div class="edu-org">University of Southern Mississippi</div>
+            </div>
+            <div class="edu-degree">BS, Industrial Engineering Technology</div>
+            <div class="edu-headline">THE DEGREE THAT NAMED WHAT I WAS ALREADY DOING.</div>
+            <div class="edu-body">
+              <p>Formal grounding in the systems-thinking the shop floor had already been teaching for over a decade. Served as <strong>Vice President of the Student Alumni Association</strong> — the same leadership instinct from the production floor, extended into the campus community.</p>
+            </div>
+          </div>
+
+          <div class="edu-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="edu-card-header">
+              <div class="edu-org">University of Oklahoma</div>
+            </div>
+            <div class="edu-degree">MS, Engineering Management</div>
+            <div class="edu-headline">ENGINEERING AND MANAGEMENT AREN'T TWO SKILLS. THEY'RE ONE DISCIPLINE.</div>
+            <div class="edu-body">
+              <p>A deliberate fusion of technical depth and organizational leadership — the degree that turned operational instinct into a formal framework for running people, projects, and systems at the same time.</p>
+            </div>
+          </div>
+
+          <div class="edu-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="edu-card-header">
+              <div class="edu-org">Edgewood University</div>
+              <div class="edu-dates">ACTIVE</div>
+            </div>
+            <div class="edu-degree">DBA, Business Administration</div>
+            <div class="edu-headline">THE RESEARCH CATCHES UP TO THE PRACTICE.</div>
+            <div class="edu-body">
+              <p>Doctoral research centered on <strong>continuous improvement and the leadership behaviors that sustain it</strong> inside technical workflows. The doctoral capstone applied that lens directly to Dal-Tile's own supply chain and negotiation practices — research aimed at the same systems this site is built around improving.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       <!-- SKILL NODES -->
       <div class="skills-section">
