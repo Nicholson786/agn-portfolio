@@ -37,6 +37,14 @@ Keep responses to 2-4 sentences unless the question warrants more. No filler.`;
 
 if (chatToggle && chatWindow) {
 
+  // Open/close the chat window
+  chatToggle.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+    if (chatWindow.classList.contains('open') && chatInput) {
+      chatInput.focus();
+    }
+  });
+
   let conversationHistory = [];
 
   async function sendMessage() {

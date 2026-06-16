@@ -252,16 +252,6 @@ if (terminalInput) {
   });
 }
 
-/* --- CHAT WIDGET TOGGLE --- */
-const chatToggle  = document.getElementById('chat-toggle');
-const chatWindow  = document.getElementById('chat-window');
-const chatInput   = document.getElementById('chat-input');
-
-if (chatToggle && chatWindow) {
-  chatToggle.addEventListener('click', () => {
-    chatWindow.classList.toggle('open');
-    if (chatWindow.classList.contains('open') && chatInput) {
-      chatInput.focus();
-    }
-  });
-}
+/* --- CHAT WIDGET TOGGLE ---
+   NOTE: All chat widget logic (toggle, send, DOM refs) lives in chat.js
+   to avoid duplicate const declarations colliding across script files. */
