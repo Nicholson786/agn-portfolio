@@ -1083,3 +1083,104 @@ footer .footer-right {
     display: none !important;
   }
 }
+
+/* ============================================================
+   PAGE TRANSITION WIPE
+   ============================================================ */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  background: var(--dark);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.48s cubic-bezier(.76,0,.24,1);
+  pointer-events: none;
+}
+
+#page-transition::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -2px;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, transparent, var(--blue), var(--cyan), var(--blue), transparent);
+  box-shadow: 0 0 24px var(--blue);
+  opacity: 0.9;
+}
+
+#page-transition.revealed {
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-transition { transition: none; }
+}
+
+/* ============================================================
+   SKILLS RADAR CHART
+   ============================================================ */
+.radar-section {
+  padding: 64px 0;
+}
+
+.radar-wrap {
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.radar-svg {
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.radar-data-group {
+  transform-origin: 180px 180px;
+  transform: scale(0);
+  transition: transform 1.3s cubic-bezier(.34,1.56,.64,1);
+}
+
+.radar-data-group.active {
+  transform: scale(1);
+}
+
+.radar-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 28px;
+}
+
+.radar-legend-item {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.radar-legend-item .radar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--blue);
+  color: var(--cyan);
+  margin-right: 10px;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .radar-wrap { flex-direction: column; }
+  .radar-svg { width: 300px; height: 300px; }
+}
+
+@media (max-width: 600px) {
+  .radar-legend { grid-template-columns: 1fr; }
+}

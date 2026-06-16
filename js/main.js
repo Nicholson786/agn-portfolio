@@ -274,3 +274,52 @@ if (navHamburger && navLinksMobile) {
     });
   });
 }
+
+/* --- PAGE TRANSITION WIPE --- */
+const pageTransition = document.getElementById('page-transition');
+const prefersReducedMotionNav = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (pageTransition) {
+  // Reveal (wipe away) shortly after this page loads
+  requestAnimationFrame(() => {
+    setTimeout(() => pageTransition.classList.add('revealed'), 60);
+  });
+
+  // Intercept internal navigation links for an exit wipe
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    const isInternalPage = /\.html($|#)/.test(href);
+    const opensNewTab = link.target === '_blank';
+    const isAnchorOnly = href.startsWith('#');
+
+    if (isInternalPage && !opensNewTab && !isAnchorOnly) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (prefersReducedMotionNav) {
+          window.location.href = href;
+          return;
+        }
+        pageTransition.classList.remove('revealed');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 480);
+      });
+    }
+  });
+}
+
+/* --- RADAR CHART REVEAL --- */
+const radarDataGroup = document.getElementById('radar-data-group');
+
+if (radarDataGroup) {
+  const radarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        radarDataGroup.classList.add('active');
+        radarObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  radarObserver.observe(radarDataGroup);
+}

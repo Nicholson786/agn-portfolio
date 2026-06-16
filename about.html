@@ -283,6 +283,7 @@
 </head>
 <body>
 
+  <div id="page-transition"></div>
   <canvas id="particle-canvas"></canvas>
   <button id="sound-toggle">[ AUDIO: OFF ]</button>
 
@@ -443,6 +444,79 @@
       <div class="skills-section">
         <div class="section-label reveal">// CAPABILITY MATRIX</div>
         <div class="section-title reveal">OPERATIONAL <span>SKILL NODES</span></div>
+
+        <!-- RADAR CHART -->
+        <div class="radar-section reveal">
+          <div class="radar-wrap">
+            <svg class="radar-svg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="radarGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- grid rings -->
+              <polygon points="180,60 264.85,95.15 300,180 264.85,264.85 180,300 95.15,264.85 60,180 95.15,95.15" fill="none" stroke="rgba(0,170,255,0.25)" stroke-width="1"/>
+              <polygon points="180,90 243.64,116.36 270,180 243.64,243.64 180,270 116.36,243.64 90,180 116.36,116.36" fill="none" stroke="rgba(0,170,255,0.18)" stroke-width="1"/>
+              <polygon points="180,120 222.43,137.57 240,180 222.43,222.43 180,240 137.57,222.43 120,180 137.57,137.57" fill="none" stroke="rgba(0,170,255,0.14)" stroke-width="1"/>
+              <polygon points="180,150 201.21,158.79 210,180 201.21,201.21 180,210 158.79,201.21 150,180 158.79,158.79" fill="none" stroke="rgba(0,170,255,0.1)" stroke-width="1"/>
+
+              <!-- spokes -->
+              <g stroke="rgba(0,170,255,0.15)" stroke-width="1">
+                <line x1="180" y1="180" x2="180" y2="60"/>
+                <line x1="180" y1="180" x2="264.85" y2="95.15"/>
+                <line x1="180" y1="180" x2="300" y2="180"/>
+                <line x1="180" y1="180" x2="264.85" y2="264.85"/>
+                <line x1="180" y1="180" x2="180" y2="300"/>
+                <line x1="180" y1="180" x2="95.15" y2="264.85"/>
+                <line x1="180" y1="180" x2="60" y2="180"/>
+                <line x1="180" y1="180" x2="95.15" y2="95.15"/>
+              </g>
+
+              <!-- animated data polygon -->
+              <g id="radar-data-group" class="radar-data-group">
+                <polygon points="180,66 263.15,96.85 282,180 249.58,249.58 180,273.6 116.36,243.64 86.4,180 107.87,107.87"
+                          fill="rgba(0,170,255,0.18)" stroke="#00aaff" stroke-width="2" filter="url(#radarGlow)"/>
+                <circle cx="180" cy="66" r="4" fill="#00eeff"/>
+                <circle cx="263.15" cy="96.85" r="4" fill="#00eeff"/>
+                <circle cx="282" cy="180" r="4" fill="#00eeff"/>
+                <circle cx="249.58" cy="249.58" r="4" fill="#00eeff"/>
+                <circle cx="180" cy="273.6" r="4" fill="#00eeff"/>
+                <circle cx="116.36" cy="243.64" r="4" fill="#00eeff"/>
+                <circle cx="86.4" cy="180" r="4" fill="#00eeff"/>
+                <circle cx="107.87" cy="107.87" r="4" fill="#00eeff"/>
+              </g>
+
+              <!-- number markers -->
+              <g font-family="'Share Tech Mono', monospace" font-size="13" fill="#7a9ab8">
+                <text x="180" y="50" text-anchor="middle">1</text>
+                <text x="272" y="80" text-anchor="middle">2</text>
+                <text x="314" y="184" text-anchor="middle">3</text>
+                <text x="272" y="287" text-anchor="middle">4</text>
+                <text x="180" y="320" text-anchor="middle">5</text>
+                <text x="82" y="287" text-anchor="middle">6</text>
+                <text x="40" y="184" text-anchor="middle">7</text>
+                <text x="82" y="80" text-anchor="middle">8</text>
+              </g>
+            </svg>
+
+            <div class="radar-legend">
+              <div class="radar-legend-item"><span class="radar-num">1</span> Process Engineering</div>
+              <div class="radar-legend-item"><span class="radar-num">2</span> Continuous Improvement</div>
+              <div class="radar-legend-item"><span class="radar-num">3</span> Maintenance Systems</div>
+              <div class="radar-legend-item"><span class="radar-num">4</span> Project Management</div>
+              <div class="radar-legend-item"><span class="radar-num">5</span> Compliance & Trade</div>
+              <div class="radar-legend-item"><span class="radar-num">6</span> Technology & Data</div>
+              <div class="radar-legend-item"><span class="radar-num">7</span> Application Development</div>
+              <div class="radar-legend-item"><span class="radar-num">8</span> Academic Research</div>
+            </div>
+          </div>
+        </div>
+
         <div class="skill-hex-grid">
           <div class="skill-node reveal">
             <div class="skill-node-label">Process Engineering</div>
