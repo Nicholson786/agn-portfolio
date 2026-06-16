@@ -255,3 +255,22 @@ if (terminalInput) {
 /* --- CHAT WIDGET TOGGLE ---
    NOTE: All chat widget logic (toggle, send, DOM refs) lives in chat.js
    to avoid duplicate const declarations colliding across script files. */
+
+/* --- MOBILE HAMBURGER NAV --- */
+const navHamburger = document.querySelector('.nav-hamburger');
+const navLinksMobile = document.querySelector('.nav-links');
+
+if (navHamburger && navLinksMobile) {
+  navHamburger.addEventListener('click', () => {
+    navHamburger.classList.toggle('open');
+    navLinksMobile.classList.toggle('open');
+  });
+
+  // Close menu when a link is clicked
+  navLinksMobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navHamburger.classList.remove('open');
+      navLinksMobile.classList.remove('open');
+    });
+  });
+}

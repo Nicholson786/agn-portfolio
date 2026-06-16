@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AGN // About — Adam Glenn Nicholson</title>
+  <meta name="description" content="The operator profile of Adam Glenn Nicholson — process engineer, doctoral candidate, and continuous improvement practitioner built on eliminating the conditions that create problems." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/about.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About — Adam Glenn Nicholson" />
+  <meta property="og:description" content="Process engineer, doctoral candidate, Lean Six Sigma Black Belt. The philosophy and credentials behind 17+ years of operational systems work." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/about.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Adam Glenn Nicholson" />
+  <meta name="twitter:description" content="Process engineer, doctoral candidate, Lean Six Sigma Black Belt." />
+  <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ---- ABOUT PAGE SPECIFIC ---- */
@@ -269,6 +283,9 @@
 </head>
 <body>
 
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+
   <!-- CURSOR -->
   <div class="cursor">
     <div class="cursor-dot"></div>
@@ -291,6 +308,9 @@
       <li><a href="ethics.html">Ethics</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
@@ -536,6 +556,8 @@
     <button class="chat-toggle" id="chat-toggle">⬡</button>
   </div>
 
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
 </body>

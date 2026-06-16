@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AGN // Adam Glenn Nicholson</title>
+  <meta name="description" content="Adam Glenn Nicholson — Process Engineer, Lean Six Sigma Black Belt, published author, and systems architect. 17+ years engineering continuous improvement into operational systems." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Adam Glenn Nicholson — Process Engineer & Systems Architect" />
+  <meta property="og:description" content="17+ years engineering continuous improvement. Published author. Lean Six Sigma Black Belt. Built from the floor. Engineered from the top." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adam Glenn Nicholson — Process Engineer & Systems Architect" />
+  <meta name="twitter:description" content="17+ years engineering continuous improvement. Published author. Lean Six Sigma Black Belt." />
+  <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ---- HOME PAGE SPECIFIC ---- */
@@ -268,6 +282,9 @@
 </head>
 <body>
 
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+
   <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
   <div class="cursor-ring"></div>
   <div class="scan-line"></div>
@@ -287,6 +304,9 @@
       <li><a href="ethics.html">Ethics</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
@@ -517,6 +537,8 @@
   </div>
 
   <script src="js/boot.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
 </body>

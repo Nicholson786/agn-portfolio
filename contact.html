@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AGN // Contact — Adam Glenn Nicholson</title>
+  <meta name="description" content="Connect with Adam Glenn Nicholson for serious conversations about continuous improvement, operational systems, and leadership." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/contact.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact — Adam Glenn Nicholson" />
+  <meta property="og:description" content="This isn't an availability notice. A channel for serious conversations about operational systems that compound." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/contact.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Adam Glenn Nicholson" />
+  <meta name="twitter:description" content="A channel for serious conversations about operational systems that compound." />
+  <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ---- CONTACT PAGE ---- */
@@ -252,6 +266,9 @@
 </head>
 <body>
 
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+
   <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
   <div class="cursor-ring"></div>
   <div class="scan-line"></div>
@@ -266,6 +283,9 @@
       <li><a href="ethics.html">Ethics</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
@@ -424,6 +444,8 @@
     <button class="chat-toggle" id="chat-toggle">⬡</button>
   </div>
 
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
   <script>
