@@ -18,7 +18,32 @@
   <meta name="twitter:title" content="About — Adam Glenn Nicholson" />
   <meta name="twitter:description" content="Process engineer, doctoral candidate, Lean Six Sigma Black Belt." />
   <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Dal-Tile Corporation"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
   <style>
     /* ---- ABOUT PAGE SPECIFIC ---- */
     .about-grid {
@@ -369,13 +394,161 @@
     @media (max-width: 768px) {
       .edu-card { padding: 22px 20px; }
     }
+
+    /* ---- FIELD MAP (5.6) ---- */
+    .field-map-section { padding: 64px 0 16px; }
+    .field-map-wrap {
+      margin-top: 32px;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .field-map-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 48% 55%, rgba(0,170,255,0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .field-map-svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .map-grid-line { stroke: rgba(0,170,255,0.06); stroke-width: 1; }
+    .map-route { stroke: rgba(0,170,255,0.22); stroke-width: 1; stroke-dasharray: 5 4; fill: none; }
+    .map-pin-outer { fill: var(--panel); stroke-width: 1.5; }
+    .map-pin-outer.home  { stroke: var(--green); }
+    .map-pin-outer.work  { stroke: var(--blue); }
+    .map-pin-outer.edu   { stroke: var(--cyan); }
+    .map-pin-dot.home    { fill: var(--green); }
+    .map-pin-dot.work    { fill: var(--blue); }
+    .map-pin-dot.edu     { fill: var(--cyan); }
+    .map-pulse { animation: map-pulse-anim 2.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes map-pulse-anim { 0%,100%{opacity:0.2;} 50%{opacity:0.6;} }
+    .map-city { font-family:'Share Tech Mono',monospace; font-size:11px; fill:var(--white); letter-spacing:1px; }
+    .map-sub  { font-family:'Share Tech Mono',monospace; font-size:9px;  fill:var(--grey);  letter-spacing:1px; }
+    .map-legend { display:flex; gap:24px; margin-top:16px; flex-wrap:wrap; }
+    .map-legend-item { font-family:var(--font-mono); font-size:9px; color:var(--grey); letter-spacing:2px; display:flex; align-items:center; gap:8px; }
+    .map-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    @media (prefers-reduced-motion:reduce) { .map-pulse { animation:none!important; opacity:0.4!important; } }
+
+    /* ---- TOOLS OF THE TRADE (5.11) ---- */
+    .tools-section { padding: 64px 0 16px; }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+    .tool-card {
+      background: var(--dark-2);
+      padding: 28px 20px;
+      position: relative;
+      transition: background 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .tool-card:hover { background: var(--panel); }
+    .tool-card::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:2px; background:var(--cyan);
+      transition:width 0.4s ease;
+    }
+    .tool-card:hover::after { width:100%; }
+    .tool-icon {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      color: var(--blue);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .tool-name {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .tool-cat {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .tool-dots { display:flex; gap:4px; margin-top:auto; }
+    .tool-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--grey-dim);
+    }
+    .tool-dot.lit { background: var(--blue); }
+    .tool-dot.dim { background: var(--cyan); opacity:0.5; }
+    @media (max-width:1024px) { .tools-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px)  { .tools-grid { grid-template-columns: 1fr; } }
+
+    /* ---- SKILLS DEPENDENCY TREE (5.8) ---- */
+    .skills-tree-section { padding: 64px 0 16px; }
+    .skills-tree-wrap {
+      margin-top: 32px;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+      overflow-x: auto;
+    }
+    .skills-tree-svg { width: 100%; min-width: 600px; height: auto; display: block; }
+    .tree-line   { stroke: rgba(0,170,255,0.2); stroke-width: 1; fill: none; }
+    .tree-box    { fill:var(--panel); stroke:var(--border); stroke-width:1; rx:2; }
+    .tree-box.root  { fill:rgba(0,170,255,0.12); stroke:var(--blue); }
+    .tree-box.mid   { fill:var(--panel); stroke:rgba(0,170,255,0.25); }
+    .tree-box.leaf  { fill:var(--dark-2); stroke:rgba(0,238,255,0.2); }
+    .tree-txt    { font-family:'Share Tech Mono',monospace; font-size:10px; fill:var(--grey); text-anchor:middle; dominant-baseline:middle; letter-spacing:0.5px; }
+    .tree-txt.root { fill:var(--white); font-size:11px; }
+    .tree-txt.mid  { fill:var(--blue); }
+
+    /* ---- SYSTEMS FLOW (5.7) ---- */
+    .sysflow-section { padding: 64px 0 16px; }
+    .sysflow-wrap {
+      margin-top: 32px;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+    }
+    .sysflow-svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .sf-box    { fill:var(--panel); stroke:var(--blue); stroke-width:1; }
+    .sf-line   { stroke:rgba(0,170,255,0.3); stroke-width:1.5; fill:none; marker-end:url(#arrowhead); }
+    .sf-loop   { stroke:rgba(0,238,255,0.25); stroke-width:1.5; fill:none; stroke-dasharray:5 3; marker-end:url(#arrowhead-cyan); }
+    .sf-label  { font-family:'Share Tech Mono',monospace; font-size:11px; fill:var(--white); text-anchor:middle; dominant-baseline:middle; letter-spacing:1px; }
+    .sf-sublabel { font-family:'Share Tech Mono',monospace; font-size:9px; fill:var(--grey); text-anchor:middle; dominant-baseline:middle; letter-spacing:1px; }
+    .sf-packet { fill:var(--cyan); r:4; }
+    .sf-packet-blue { fill:var(--blue); r:3; }
+
+    /* Data packet travel animations */
+    @keyframes travel-right  { 0%{opacity:0} 5%{opacity:0.9} 90%{opacity:0.9} 100%{opacity:0} }
+    @keyframes travel-down   { 0%{opacity:0} 5%{opacity:0.9} 90%{opacity:0.9} 100%{opacity:0} }
+    .p1 { animation: travel-right 2.4s  linear infinite; }
+    .p2 { animation: travel-right 2.4s  linear infinite 0.8s; }
+    .p3 { animation: travel-right 2.4s  linear infinite 1.6s; }
+    .p4 { animation: travel-right 2.2s  linear infinite 0.4s; }
+    .p5 { animation: travel-right 2.2s  linear infinite 1.2s; }
+    .p6 { animation: travel-down  3s    linear infinite; }
+    .p7 { animation: travel-down  3s    linear infinite 1.5s; }
+    @media (prefers-reduced-motion:reduce) {
+      .sf-packet, .sf-packet-blue { animation:none!important; opacity:0!important; }
+    }
   </style>
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="page-transition"></div>
   <canvas id="particle-canvas"></canvas>
-  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
 
   <!-- CURSOR -->
   <div class="cursor">
@@ -397,15 +570,26 @@
       <li><a href="experience.html">Experience</a></li>
       <li><a href="works.html">Works</a></li>
       <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
-  <main class="page-wrapper">
+  <main class="page-wrapper" id="main-content">
 
     <!-- PAGE HEADER -->
     <div class="page-header">
@@ -589,6 +773,107 @@
         </div>
       </div>
 
+      <!-- FIELD MAP (5.6) -->
+      <div class="field-map-section">
+        <div class="section-label reveal">// FIELD MAP</div>
+        <div class="section-title reveal">THE <span>JOURNEY</span></div>
+        <div class="field-map-wrap reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+
+          <svg class="field-map-svg" viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" aria-label="Geographic journey map showing key locations">
+
+            <!-- Grid lines -->
+            <g>
+              <line class="map-grid-line" x1="0" y1="105" x2="880" y2="105"/>
+              <line class="map-grid-line" x1="0" y1="210" x2="880" y2="210"/>
+              <line class="map-grid-line" x1="0" y1="315" x2="880" y2="315"/>
+              <line class="map-grid-line" x1="220" y1="0" x2="220" y2="420"/>
+              <line class="map-grid-line" x1="440" y1="0" x2="440" y2="420"/>
+              <line class="map-grid-line" x1="660" y1="0" x2="660" y2="420"/>
+            </g>
+
+            <!-- Route lines -->
+            <!-- Home (Broken Arrow) → Muskogee (Dal-Tile) -->
+            <line class="map-route" x1="355" y1="285" x2="400" y2="272"/>
+            <!-- Muskogee → Norman (OU) -->
+            <line class="map-route" x1="400" y1="272" x2="335" y2="308"/>
+            <!-- Norman → Warner/Connors -->
+            <line class="map-route" x1="335" y1="308" x2="415" y2="282"/>
+            <!-- Oklahoma cluster → Hattiesburg (USM) -->
+            <line class="map-route" x1="400" y1="272" x2="590" y2="350"/>
+            <!-- Oklahoma cluster → Madison (Edgewood) -->
+            <line class="map-route" x1="390" y1="278" x2="545" y2="138"/>
+
+            <!-- NODE: Broken Arrow, OK (HOME) -->
+            <g transform="translate(355,285)">
+              <circle r="22" class="map-pin-outer home" opacity="0.15" class="map-pulse"/>
+              <circle r="14" class="map-pin-outer home"/>
+              <circle r="5"  class="map-pin-dot home"/>
+              <text x="0" y="-28" text-anchor="middle" class="map-city">BROKEN ARROW</text>
+              <text x="0" y="-16" text-anchor="middle" class="map-sub">HOME BASE</text>
+            </g>
+
+            <!-- NODE: Muskogee, OK (DAL-TILE) -->
+            <g transform="translate(400,270)">
+              <circle r="14" class="map-pin-outer work"/>
+              <circle r="5"  class="map-pin-dot work"/>
+              <text x="22" y="-8" text-anchor="start" class="map-city">MUSKOGEE, OK</text>
+              <text x="22" y="6"  text-anchor="start" class="map-sub">DAL-TILE CORP</text>
+            </g>
+
+            <!-- NODE: Norman, OK (OU) -->
+            <g transform="translate(330,312)">
+              <circle r="14" class="map-pin-outer edu"/>
+              <circle r="5"  class="map-pin-dot edu"/>
+              <text x="-20" y="28"  text-anchor="middle" class="map-city">NORMAN, OK</text>
+              <text x="-20" y="40"  text-anchor="middle" class="map-sub">UNIV OF OKLAHOMA</text>
+            </g>
+
+            <!-- NODE: Warner, OK (Connors State) -->
+            <g transform="translate(415,285)">
+              <circle r="10" class="map-pin-outer edu" opacity="0.7"/>
+              <circle r="4"  class="map-pin-dot edu"/>
+              <text x="18" y="4"   text-anchor="start" class="map-city">WARNER, OK</text>
+              <text x="18" y="17"  text-anchor="start" class="map-sub">CONNORS STATE</text>
+            </g>
+
+            <!-- NODE: Hattiesburg, MS (USM) -->
+            <g transform="translate(590,352)">
+              <circle r="14" class="map-pin-outer edu"/>
+              <circle r="5"  class="map-pin-dot edu"/>
+              <text x="0" y="-26" text-anchor="middle" class="map-city">HATTIESBURG, MS</text>
+              <text x="0" y="-14" text-anchor="middle" class="map-sub">UNIV OF S. MISSISSIPPI</text>
+            </g>
+
+            <!-- NODE: Madison, WI (Edgewood) — active pulse -->
+            <g transform="translate(545,138)">
+              <circle r="24" fill="rgba(0,238,255,0.08)" class="map-pulse"/>
+              <circle r="14" class="map-pin-outer edu" stroke="var(--cyan)"/>
+              <circle r="5"  fill="var(--cyan)"/>
+              <text x="20" y="-8"  text-anchor="start" class="map-city">MADISON, WI</text>
+              <text x="20" y="6"   text-anchor="start" class="map-sub">EDGEWOOD UNIV // ACTIVE</text>
+            </g>
+
+            <!-- Compass label -->
+            <text x="848" y="400" text-anchor="end" style="font-family:'Share Tech Mono',monospace;font-size:9px;fill:rgba(0,170,255,0.2);letter-spacing:2px;">AGN // FIELD MAP</text>
+
+          </svg>
+
+          <div class="map-legend">
+            <div class="map-legend-item">
+              <div class="map-legend-dot" style="background:var(--green);"></div>HOME BASE
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-dot" style="background:var(--blue);"></div>OPERATIONAL
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-dot" style="background:var(--cyan);"></div>ACADEMIC
+            </div>
+          </div>
+        </div>
+      </div><!-- end field-map-section -->
+
       <!-- SKILL NODES -->
       <div class="skills-section">
         <div class="section-label reveal">// CAPABILITY MATRIX</div>
@@ -702,6 +987,261 @@
         </div>
       </div>
 
+      <!-- TOOLS OF THE TRADE (5.11) -->
+      <div class="tools-section">
+        <div class="section-label reveal">// OPERATOR LOADOUT</div>
+        <div class="section-title reveal">TOOLS OF THE <span>TRADE</span></div>
+        <div class="tools-grid">
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">⬡</div>
+            <div class="tool-name">SAP CMMS</div>
+            <div class="tool-cat">MAINTENANCE SYSTEMS</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">[ ]</div>
+            <div class="tool-name">SQL</div>
+            <div class="tool-cat">DATA &amp; ANALYTICS</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">◈</div>
+            <div class="tool-name">Raspberry Pi</div>
+            <div class="tool-cat">HARDWARE PROTOTYPING</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot dim"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">▦</div>
+            <div class="tool-name">3D Printing</div>
+            <div class="tool-cat">ADDITIVE MANUFACTURING</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot dim"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">◻</div>
+            <div class="tool-name">Fusion 360</div>
+            <div class="tool-cat">CAD / DESIGN</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot dim"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">⟁</div>
+            <div class="tool-name">AI Integration</div>
+            <div class="tool-cat">APPLIED AI // OPERATIONS</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">≡</div>
+            <div class="tool-name">Microsoft Suite</div>
+            <div class="tool-cat">DOCUMENTATION &amp; DATA</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+            </div>
+          </div>
+          <div class="tool-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="tool-icon">⬤</div>
+            <div class="tool-name">Google Suite</div>
+            <div class="tool-cat">PROJECT &amp; COLLABORATION</div>
+            <div class="tool-dots">
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div>
+              <div class="tool-dot lit"></div><div class="tool-dot lit"></div><div class="tool-dot dim"></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end tools-section -->
+
+      <!-- SKILLS DEPENDENCY TREE (5.8) -->
+      <div class="skills-tree-section">
+        <div class="section-label reveal">// CAPABILITY PROGRESSION</div>
+        <div class="section-title reveal">SKILLS <span>DEPENDENCY TREE</span></div>
+        <div class="skills-tree-wrap reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <svg class="skills-tree-svg" viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" aria-label="Skills dependency tree showing capability progression">
+
+            <!-- ROOT -->
+            <rect x="20" y="130" width="110" height="44" class="tree-box root" rx="2"/>
+            <text x="75" y="152" class="tree-txt root">FLOOR OPS</text>
+
+            <!-- LEVEL 1 LINES from root -->
+            <line class="tree-line" x1="130" y1="140" x2="170" y2="100"/>
+            <line class="tree-line" x1="130" y1="152" x2="170" y2="152"/>
+            <line class="tree-line" x1="130" y1="162" x2="170" y2="212"/>
+
+            <!-- L1: MAINTENANCE -->
+            <rect x="170" y="78" width="110" height="44" class="tree-box mid" rx="2"/>
+            <text x="225" y="100" class="tree-txt mid">MAINTENANCE</text>
+
+            <!-- L1: PROCESS ENG -->
+            <rect x="170" y="130" width="110" height="44" class="tree-box mid" rx="2"/>
+            <text x="225" y="152" class="tree-txt mid">PROCESS ENG</text>
+
+            <!-- L1: TECHNICAL -->
+            <rect x="170" y="190" width="110" height="44" class="tree-box mid" rx="2"/>
+            <text x="225" y="212" class="tree-txt mid">TECHNICAL</text>
+
+            <!-- LEVEL 2 from MAINTENANCE -->
+            <line class="tree-line" x1="280" y1="95"  x2="320" y2="72"/>
+            <line class="tree-line" x1="280" y1="100" x2="320" y2="118"/>
+            <rect x="320" y="52"  width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="72"  class="tree-txt">SAP CMMS</text>
+            <rect x="320" y="98"  width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="118" class="tree-txt">RELIABILITY ENG</text>
+
+            <!-- LEVEL 2 from PROCESS ENG -->
+            <line class="tree-line" x1="280" y1="146" x2="320" y2="140"/>
+            <line class="tree-line" x1="280" y1="152" x2="320" y2="166"/>
+            <rect x="320" y="120" width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="140" class="tree-txt">STANDARD WORK</text>
+            <rect x="320" y="146" width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="166" class="tree-txt">VARIATION REDUC.</text>
+
+            <!-- LEVEL 2 from TECHNICAL -->
+            <line class="tree-line" x1="280" y1="207" x2="320" y2="198"/>
+            <line class="tree-line" x1="280" y1="214" x2="320" y2="226"/>
+            <rect x="320" y="178" width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="198" class="tree-txt">SQL // DATA</text>
+            <rect x="320" y="206" width="120" height="40" class="tree-box leaf" rx="2"/>
+            <text x="380" y="226" class="tree-txt">APP DEVELOPMENT</text>
+
+            <!-- LEVEL 3: converge lines to higher capabilities -->
+            <line class="tree-line" x1="440" y1="72"  x2="490" y2="80"/>
+            <line class="tree-line" x1="440" y1="118" x2="490" y2="110"/>
+            <line class="tree-line" x1="440" y1="140" x2="490" y2="155"/>
+            <line class="tree-line" x1="440" y1="166" x2="490" y2="155"/>
+            <line class="tree-line" x1="440" y1="198" x2="490" y2="226"/>
+            <line class="tree-line" x1="440" y1="226" x2="490" y2="226"/>
+
+            <!-- L3 nodes -->
+            <rect x="490" y="60"  width="130" height="40" class="tree-box mid" rx="2"/>
+            <text x="555" y="80"  class="tree-txt mid">PREDICTIVE MAINT</text>
+            <rect x="490" y="135" width="130" height="40" class="tree-box mid" rx="2"/>
+            <text x="555" y="155" class="tree-txt mid">CI FRAMEWORKS</text>
+            <rect x="490" y="206" width="130" height="40" class="tree-box mid" rx="2"/>
+            <text x="555" y="226" class="tree-txt mid">KNOWLEDGE SYS</text>
+
+            <!-- LEVEL 4 convergence -->
+            <line class="tree-line" x1="620" y1="80"  x2="680" y2="116"/>
+            <line class="tree-line" x1="620" y1="155" x2="680" y2="152"/>
+            <line class="tree-line" x1="620" y1="226" x2="680" y2="190"/>
+
+            <!-- Final: PROCESS ENGINEER -->
+            <rect x="680" y="96"  width="130" height="44" class="tree-box root" rx="2"/>
+            <text x="745" y="116" class="tree-txt root" font-size="10">LSS BLACK BELT</text>
+            <text x="745" y="128" class="tree-txt" font-size="9" fill="rgba(0,170,255,0.6)">PROCESS ENGINEER</text>
+
+            <!-- DBA branch up -->
+            <line class="tree-line" x1="745" y1="96"  x2="745" y2="60"/>
+            <rect x="680" y="36"  width="130" height="40" class="tree-box leaf" rx="2"/>
+            <text x="745" y="52"  class="tree-txt mid">DBA // RESEARCH</text>
+            <text x="745" y="66"  class="tree-txt" font-size="9">EDGEWOOD // ACTIVE</text>
+
+          </svg>
+        </div>
+      </div><!-- end skills-tree-section -->
+
+      <!-- SYSTEMS FLOW DIAGRAM (5.7) -->
+      <div class="sysflow-section">
+        <div class="section-label reveal">// SYSTEMS THINKING</div>
+        <div class="section-title reveal">SYSTEMS <span>FLOW</span></div>
+        <div class="sysflow-wrap reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <svg class="sysflow-svg" viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" aria-label="Systems flow diagram showing operational process nodes">
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="rgba(0,170,255,0.4)"/>
+              </marker>
+              <marker id="arrowhead-cyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="rgba(0,238,255,0.35)"/>
+              </marker>
+            </defs>
+
+            <!-- NODE: INPUT -->
+            <rect x="30"  y="100" width="120" height="60" class="sf-box" rx="3"/>
+            <text x="90"  y="125" class="sf-label">INPUT</text>
+            <text x="90"  y="143" class="sf-sublabel">OBSERVATION</text>
+
+            <!-- INPUT → PROCESS -->
+            <line class="sf-line" x1="150" y1="130" x2="228" y2="130"/>
+            <!-- Packets on INPUT→PROCESS -->
+            <circle class="sf-packet p1"><animateMotion dur="2.4s" repeatCount="indefinite" path="M150,130 L228,130"/></circle>
+            <circle class="sf-packet p2"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M150,130 L228,130"/></circle>
+
+            <!-- NODE: STANDARD (top) -->
+            <rect x="230" y="20"  width="140" height="60" class="sf-box" rx="3" stroke="var(--cyan)"/>
+            <text x="300" y="45"  class="sf-label">STANDARD</text>
+            <text x="300" y="63"  class="sf-sublabel">DEFINED BASELINE</text>
+
+            <!-- STANDARD → PROCESS (down) -->
+            <line class="sf-line" x1="300" y1="80"  x2="300" y2="100"/>
+
+            <!-- NODE: PROCESS -->
+            <rect x="230" y="100" width="140" height="60" class="sf-box" rx="3"/>
+            <text x="300" y="125" class="sf-label">PROCESS</text>
+            <text x="300" y="143" class="sf-sublabel">ENGINEERED WORK</text>
+
+            <!-- PROCESS → MEASURE -->
+            <line class="sf-line" x1="370" y1="130" x2="448" y2="130"/>
+            <circle class="sf-packet p3"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.4s" path="M370,130 L448,130"/></circle>
+
+            <!-- NODE: MEASURE -->
+            <rect x="450" y="100" width="120" height="60" class="sf-box" rx="3"/>
+            <text x="510" y="125" class="sf-label">MEASURE</text>
+            <text x="510" y="143" class="sf-sublabel">VARIATION VISIBLE</text>
+
+            <!-- MEASURE → OUTPUT -->
+            <line class="sf-line" x1="570" y1="130" x2="648" y2="130"/>
+            <circle class="sf-packet p4"><animateMotion dur="2.2s" repeatCount="indefinite" path="M570,130 L648,130"/></circle>
+            <circle class="sf-packet p5"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.1s" path="M570,130 L648,130"/></circle>
+
+            <!-- NODE: OUTPUT -->
+            <rect x="650" y="100" width="120" height="60" class="sf-box" rx="3" stroke="var(--green)"/>
+            <text x="710" y="125" class="sf-label" fill="var(--green)">OUTPUT</text>
+            <text x="710" y="143" class="sf-sublabel">IMPROVED STATE</text>
+
+            <!-- FEEDBACK LOOP: OUTPUT → bottom → INPUT -->
+            <path class="sf-loop" d="M710,160 Q710,220 90,220 Q90,160 90,160"/>
+            <!-- Packets on feedback loop -->
+            <circle class="sf-packet-blue p6" fill="var(--blue)">
+              <animateMotion dur="3s" repeatCount="indefinite" path="M710,160 Q710,220 90,220 Q90,160 90,160"/>
+            </circle>
+            <circle class="sf-packet-blue p7" fill="var(--blue)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="1.5s" path="M710,160 Q710,220 90,220 Q90,160 90,160"/>
+            </circle>
+
+            <!-- Labels -->
+            <text x="440" y="244" text-anchor="middle" style="font-family:'Share Tech Mono',monospace;font-size:9px;fill:rgba(0,238,255,0.3);letter-spacing:2px;">// FEEDBACK LOOP — DRIVES NEXT ITERATION</text>
+
+          </svg>
+        </div>
+      </div><!-- end sysflow-section -->
+
       <!-- COMMUNITY SECTION -->
       <div class="community-section reveal">
         <div class="bracket-tl"></div>
@@ -735,6 +1275,7 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
       <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
     </footer>
 
@@ -745,7 +1286,7 @@
     <div class="terminal-window">
       <div class="terminal-titlebar">
         <span>AGN // SECURE TERMINAL</span>
-        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
       </div>
       <div class="terminal-body" id="terminal-body">
         <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
@@ -753,7 +1294,7 @@
       </div>
       <div class="terminal-input-row">
         <span class="terminal-prompt">AGN://&gt;</span>
-        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
       </div>
     </div>
   </div>
@@ -772,11 +1313,11 @@
         </div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
         <button class="chat-send" id="chat-send">SEND</button>
       </div>
     </div>
-    <button class="chat-toggle" id="chat-toggle">⬡</button>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
   </div>
 
   <script src="js/particles.js"></script>

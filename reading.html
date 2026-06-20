@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Reading List — Adam Glenn Nicholson</title>
+  <meta name="description" content="The books and frameworks outside his own work that shaped Adam Glenn Nicholson's continuous improvement philosophy." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/reading.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reading List — Adam Glenn Nicholson" />
+  <meta property="og:description" content="The books and frameworks that shaped a CI practitioner's thinking." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/reading.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": { "@type": "Organization", "name": "Dal-Tile Corporation" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- READING LIST ---- */
+
+    .reading-intro {
+      max-width: 680px;
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .reading-intro p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* CATEGORY LABEL */
+    .reading-category {
+      padding: 48px 0 8px;
+    }
+
+    /* BOOK CARD */
+    .reading-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin: 24px 0 48px;
+    }
+
+    .reading-card {
+      background: var(--panel);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .reading-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .reading-card:hover { background: var(--panel-2); }
+
+    .reading-card:hover .reading-card-accent {
+      height: 100%;
+    }
+
+    .reading-card-accent {
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--blue);
+      transition: height 0.4s ease;
+    }
+
+    .reading-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--blue);
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .reading-title {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .reading-author {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--blue);
+      font-style: italic;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+
+    .reading-pub {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey-dim);
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .reading-headline {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .reading-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--grey);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .reading-body em {
+      color: var(--white);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .reading-body strong {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .reading-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey);
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border: 1px solid var(--grey-dim);
+      margin-top: 20px;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .reading-grid { grid-template-columns: 1fr; }
+      .reading-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html" class="active">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <div class="page-header">
+      <div class="page-header-label">> ACCESSING INFLUENCE LOG... RECORDS RETRIEVED</div>
+      <h1>READING <span>LIST</span></h1>
+    </div>
+
+    <div class="container">
+
+      <div class="reading-intro reveal">
+        <p>The books and frameworks outside the published work that shaped the CI philosophy behind it. Not a curriculum — a record of what landed, and why it mattered in context of the work.</p>
+      </div>
+
+      <!-- CONTINUOUS IMPROVEMENT / LEAN -->
+      <div class="reading-category">
+        <div class="section-label reveal">// LEAN &amp; CONTINUOUS IMPROVEMENT</div>
+      </div>
+
+      <div class="reading-grid">
+
+        <div class="reading-card reveal">
+          <div class="bracket-tl"></div>
+          <div class="reading-card-accent"></div>
+          <div class="reading-num">[ INFLUENCE 001 ]</div>
+          <div class="reading-title">2 Second Lean</div>
+          <div class="reading-author">Paul Akers</div>
+          <div class="reading-pub">FastCap Press</div>
+          <div class="reading-headline">WASTE ELIMINATION AT THE MICRO SCALE</div>
+          <p class="reading-body">
+            The central premise: <em>find 2 seconds of waste in every task and eliminate it</em>. Not as a project, not as a Kaizen event — as a daily discipline applied everywhere, by everyone. The compound effect of that mindset, sustained across an entire organization, is transformational.
+          </p>
+          <p class="reading-body" style="margin-top:12px;">
+            What makes Akers' approach distinctive is its refusal to make lean theoretical. The waste is on the floor, in the workflow, in the motion pattern. <strong>You film it, you see it, you fix it, you film the fix.</strong> The documentation loop is baked in. The learning compounds. This is "eliminate the conditions" at its most granular — applied not to systems but to seconds.
+          </p>
+          <span class="reading-tag">LEAN</span>
+          <span class="reading-tag">WASTE ELIMINATION</span>
+          <span class="reading-tag">DAILY CI</span>
+        </div>
+
+      </div>
+
+      <!-- CHANGE LEADERSHIP -->
+      <div class="reading-category">
+        <div class="section-label reveal">// CHANGE LEADERSHIP</div>
+      </div>
+
+      <div class="reading-grid">
+
+        <div class="reading-card reveal">
+          <div class="bracket-tl"></div>
+          <div class="reading-card-accent"></div>
+          <div class="reading-num">[ INFLUENCE 002 ]</div>
+          <div class="reading-title">Leading Change</div>
+          <div class="reading-author">John P. Kotter</div>
+          <div class="reading-pub">Harvard Business Review Press // 1996</div>
+          <div class="reading-headline">WHY CHANGE FAILS — AND HOW TO MAKE IT HOLD</div>
+          <p class="reading-body">
+            Kotter's central argument: most organizational change efforts fail not because the plan is wrong, but because the change is never anchored in the culture. An 8-step model for leading transformation — not managing it — through urgency, coalition building, short-term wins, and cultural integration.
+          </p>
+          <p class="reading-body" style="margin-top:12px;">
+            The final stage of Kotter's model — <em>"anchor new approaches in the culture"</em> — maps directly onto the Compound stage of the CI maturity model. The hardest part of change is not the change itself. It's making the change the new normal so thoroughly that the old way no longer feels possible. <strong>That's the transition from improvement event to improvement culture.</strong>
+          </p>
+          <span class="reading-tag">CHANGE MANAGEMENT</span>
+          <span class="reading-tag">LEADERSHIP</span>
+          <span class="reading-tag">CULTURAL TRANSFORMATION</span>
+        </div>
+
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

@@ -18,7 +18,32 @@
   <meta name="twitter:title" content="Operations Log — Adam Glenn Nicholson" />
   <meta name="twitter:description" content="17 years of operational systems built, led, and engineered." />
   <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Dal-Tile Corporation"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
   <style>
     .timeline { position: relative; padding: 64px 0; }
     .timeline::before {
@@ -69,6 +94,72 @@
     .impact-list li strong { color: var(--white); }
 
     .certs-section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+    /* CONSTELLATION */
+    .constellation-wrap {
+      margin: 40px 0 8px;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .constellation-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(0,170,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .constellation-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+    .const-line {
+      stroke: rgba(0,170,255,0.18);
+      stroke-width: 1;
+      fill: none;
+    }
+    .bg-star { fill: rgba(0,170,255,0.25); }
+    .node-ring-outer { fill: var(--panel); stroke-width: 1.5; }
+    .node-ring-outer.validated { stroke: var(--blue); }
+    .node-ring-outer.active    { stroke: var(--cyan); }
+    .node-ring-outer.pending   { stroke: var(--blue-dim); }
+    .node-core-dot { }
+    .node-core-dot.validated {
+      fill: var(--blue);
+      animation: const-pulse 2.5s ease-in-out infinite;
+    }
+    .node-core-dot.active {
+      fill: var(--cyan);
+      animation: const-pulse 3s ease-in-out infinite;
+    }
+    .node-core-dot.pending { fill: var(--blue-dim); }
+    @keyframes const-pulse {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 1; }
+    }
+    .node-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      fill: var(--white);
+      letter-spacing: 1.5px;
+    }
+    .node-status {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+    .node-status.validated { fill: #00ff88; }
+    .node-status.active    { fill: #00eeff; }
+    .node-status.pending   { fill: #006699; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .node-core-dot { animation: none !important; opacity: 1 !important; }
+    }
+
     .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 32px; }
     .cert-card { background: var(--dark-2); padding: 32px 24px; text-align: center; position: relative; transition: background 0.3s; }
     .cert-card:hover { background: var(--panel); }
@@ -93,9 +184,10 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="page-transition"></div>
   <canvas id="particle-canvas"></canvas>
-  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
 
   <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
   <div class="cursor-ring"></div>
@@ -109,15 +201,26 @@
       <li><a href="experience.html" class="active">Experience</a></li>
       <li><a href="works.html">Works</a></li>
       <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
-  <main class="page-wrapper">
+  <main class="page-wrapper" id="main-content">
 
     <div class="page-header">
       <div class="page-header-label">> ACCESSING OPERATIONS LOG... 2008 — PRESENT</div>
@@ -247,6 +350,103 @@
       <div class="certs-section">
         <div class="section-label reveal">// CERTIFICATIONS & MEMBERSHIPS</div>
         <div class="section-title reveal">CREDENTIALS <span>ON RECORD</span></div>
+
+        <!-- CONSTELLATION -->
+        <div class="constellation-wrap reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <svg class="constellation-svg" viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" aria-label="Credential constellation map">
+
+            <!-- Background field stars -->
+            <g class="bg-stars">
+              <circle class="bg-star" cx="60"  cy="40"  r="1"/>
+              <circle class="bg-star" cx="130" cy="18"  r="1.2"/>
+              <circle class="bg-star" cx="220" cy="55"  r="0.8"/>
+              <circle class="bg-star" cx="310" cy="28"  r="1"/>
+              <circle class="bg-star" cx="410" cy="12"  r="1.4"/>
+              <circle class="bg-star" cx="510" cy="44"  r="0.9"/>
+              <circle class="bg-star" cx="620" cy="22"  r="1.1"/>
+              <circle class="bg-star" cx="730" cy="50"  r="0.8"/>
+              <circle class="bg-star" cx="820" cy="30"  r="1.3"/>
+              <circle class="bg-star" cx="40"  cy="130" r="0.9"/>
+              <circle class="bg-star" cx="850" cy="110" r="1"/>
+              <circle class="bg-star" cx="780" cy="290" r="0.8"/>
+              <circle class="bg-star" cx="90"  cy="295" r="1.2"/>
+              <circle class="bg-star" cx="490" cy="310" r="0.9"/>
+              <circle class="bg-star" cx="660" cy="315" r="1"/>
+              <circle class="bg-star" cx="200" cy="310" r="0.8"/>
+              <circle class="bg-star" cx="350" cy="320" r="1.1"/>
+            </g>
+
+            <!-- Constellation lines -->
+            <g>
+              <!-- IISE → LSS Black Belt -->
+              <line class="const-line" x1="155" y1="155" x2="330" y2="185"/>
+              <!-- PMI → LSS Black Belt -->
+              <line class="const-line" x1="195" y1="265" x2="330" y2="185"/>
+              <!-- LSS Black Belt → Google PM -->
+              <line class="const-line" x1="370" y1="185" x2="530" y2="140"/>
+              <!-- Google PM → PMP -->
+              <line class="const-line" x1="570" y1="140" x2="720" y2="100"/>
+              <!-- LSS Black Belt → DBA -->
+              <line class="const-line" x1="350" y1="200" x2="455" y2="270"/>
+              <!-- DBA → PMI -->
+              <line class="const-line" x1="445" y1="275" x2="215" y2="265"/>
+              <!-- IISE → DBA (academic link) -->
+              <line class="const-line" x1="165" y1="148" x2="445" y2="265" stroke-dasharray="4 4"/>
+            </g>
+
+            <!-- NODE: LSS BLACK BELT (center anchor) -->
+            <g transform="translate(350,185)">
+              <circle r="22" class="node-ring-outer validated"/>
+              <circle r="8"  class="node-core-dot validated"/>
+              <text y="-32" text-anchor="middle" class="node-label">LSS BLACK BELT</text>
+              <text y="38"  text-anchor="middle" class="node-status validated">VALIDATED</text>
+            </g>
+
+            <!-- NODE: GOOGLE PM -->
+            <g transform="translate(550,140)">
+              <circle r="18" class="node-ring-outer validated"/>
+              <circle r="6"  class="node-core-dot validated" style="animation-delay:0.4s"/>
+              <text y="-28" text-anchor="middle" class="node-label">GOOGLE PM</text>
+              <text y="32"  text-anchor="middle" class="node-status validated">VALIDATED</text>
+            </g>
+
+            <!-- NODE: PMP (upper right, in prep) -->
+            <g transform="translate(730,100)">
+              <circle r="18" class="node-ring-outer pending"/>
+              <circle r="6"  class="node-core-dot pending"/>
+              <text y="-28" text-anchor="middle" class="node-label">PMP</text>
+              <text y="32"  text-anchor="middle" class="node-status pending">IN PREP</text>
+            </g>
+
+            <!-- NODE: IISE (left) -->
+            <g transform="translate(155,155)">
+              <circle r="18" class="node-ring-outer active"/>
+              <circle r="6"  class="node-core-dot active" style="animation-delay:0.8s"/>
+              <text y="-28" text-anchor="middle" class="node-label">IISE</text>
+              <text y="32"  text-anchor="middle" class="node-status active">ACTIVE MEMBER</text>
+            </g>
+
+            <!-- NODE: PMI (lower left) -->
+            <g transform="translate(205,270)">
+              <circle r="18" class="node-ring-outer active"/>
+              <circle r="6"  class="node-core-dot active" style="animation-delay:1.2s"/>
+              <text y="-28" text-anchor="middle" class="node-label">PMI</text>
+              <text y="32"  text-anchor="middle" class="node-status active">ACTIVE MEMBER</text>
+            </g>
+
+            <!-- NODE: DBA (lower center, ongoing) -->
+            <g transform="translate(460,275)">
+              <circle r="20" class="node-ring-outer pending"/>
+              <circle r="7"  class="node-core-dot pending"/>
+              <text y="-32" text-anchor="middle" class="node-label">DBA</text>
+              <text y="36"  text-anchor="middle" class="node-status pending">IN PROGRESS</text>
+            </g>
+
+          </svg>
+        </div><!-- end constellation-wrap -->
+
         <div class="certs-grid">
           <div class="cert-card reveal">
             <div class="bracket-tl"></div>
@@ -291,6 +491,7 @@
 
     <footer>
       <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
       <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
     </footer>
 
@@ -300,7 +501,7 @@
     <div class="terminal-window">
       <div class="terminal-titlebar">
         <span>AGN // SECURE TERMINAL</span>
-        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
       </div>
       <div class="terminal-body" id="terminal-body">
         <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
@@ -308,7 +509,7 @@
       </div>
       <div class="terminal-input-row">
         <span class="terminal-prompt">AGN://&gt;</span>
-        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
       </div>
     </div>
   </div>
@@ -323,11 +524,11 @@
         <div class="chat-message assistant"><strong>AI INTERFACE — IN DEVELOPMENT</strong><br>Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a></div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
         <button class="chat-send" id="chat-send">SEND</button>
       </div>
     </div>
-    <button class="chat-toggle" id="chat-toggle">⬡</button>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
   </div>
 
   <script src="js/particles.js"></script>

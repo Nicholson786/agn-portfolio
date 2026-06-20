@@ -1,0 +1,18 @@
+{
+  "name": "AGN // Adam Glenn Nicholson",
+  "short_name": "AGN",
+  "description": "Adam Glenn Nicholson — Process Engineer, Lean Six Sigma Black Belt, published author, and systems architect.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#00aaff",
+  "background_color": "#020508",
+  "icons": [
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

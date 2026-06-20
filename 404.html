@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // 404 — Signal Lost</title>
+  <meta name="description" content="Node not found." />
+  <meta name="theme-color" content="#00aaff" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .error-stage {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 0;
+    }
+
+    .error-core {
+      text-align: center;
+      max-width: 700px;
+      padding: 0 24px;
+    }
+
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      letter-spacing: 12px;
+      text-shadow:
+        0 0 40px rgba(0,170,255,0.4),
+        0 0 80px rgba(0,170,255,0.15);
+      margin-bottom: 8px;
+    }
+
+    .error-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .error-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 32px 40px;
+      position: relative;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .error-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0.5;
+    }
+
+    .error-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .error-row:last-child { margin-bottom: 0; }
+
+    .error-key {
+      color: var(--grey);
+      min-width: 120px;
+      flex-shrink: 0;
+      font-size: 10px;
+      padding-top: 2px;
+      letter-spacing: 2px;
+    }
+
+    .error-val { color: var(--white); }
+    .error-val.red { color: var(--red); }
+    .error-val.blue { color: var(--blue); }
+
+    .error-message {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .error-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      .error-panel { padding: 24px 20px; }
+      .error-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <section class="error-stage">
+      <div class="error-core">
+
+        <div class="error-code reveal">404</div>
+        <div class="error-label reveal">> SIGNAL LOST // NODE NOT FOUND</div>
+
+        <div class="error-panel reveal">
+          <div class="bracket-tl"></div>
+          <div class="bracket-br"></div>
+          <div class="error-row">
+            <div class="error-key">STATUS</div>
+            <div class="error-val red">ERROR // NODE UNREACHABLE</div>
+          </div>
+          <div class="error-row">
+            <div class="error-key">CODE</div>
+            <div class="error-val">404 // NOT FOUND</div>
+          </div>
+          <div class="error-row">
+            <div class="error-key">DIAGNOSIS</div>
+            <div class="error-val">COORDINATE DOES NOT EXIST IN THIS SYSTEM</div>
+          </div>
+          <div class="error-row">
+            <div class="error-key">OPERATOR</div>
+            <div class="error-val blue">ADAM GLENN NICHOLSON</div>
+          </div>
+          <div class="error-row">
+            <div class="error-key">BASE STATUS</div>
+            <div class="error-val" style="color:var(--green)">NOMINAL // STANDING BY</div>
+          </div>
+        </div>
+
+        <p class="error-message reveal">
+          The node you requested doesn't exist in this system. The coordinates may have shifted, the route may be deprecated, or the link that brought you here may be pointing at empty space.
+        </p>
+
+        <div class="error-ctas reveal">
+          <a href="index.html" class="btn"><span>[ RETURN TO BASE ]</span></a>
+          <a href="about.html" class="btn btn-cyan"><span>[ ACCESS PROFILE ]</span></a>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

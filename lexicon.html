@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Lexicon — Adam Glenn Nicholson</title>
+  <meta name="description" content="The working vocabulary of Adam Glenn Nicholson — terms, concepts, and phrases from seventeen years of continuous improvement practice." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/lexicon.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lexicon — Adam Glenn Nicholson" />
+  <meta property="og:description" content="The working vocabulary of a continuous improvement practitioner." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/lexicon.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": { "@type": "Organization", "name": "Dal-Tile Corporation" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- LEXICON ---- */
+
+    .lexicon-intro {
+      max-width: 680px;
+      padding: 56px 0 48px;
+    }
+
+    .lexicon-intro p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* LETTER DIVIDER */
+    .lex-letter {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      color: rgba(0,170,255,0.12);
+      letter-spacing: 4px;
+      padding: 32px 0 8px;
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    /* ENTRY */
+    .lex-entry {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(0,170,255,0.06);
+      position: relative;
+    }
+
+    .lex-entry:last-child { border-bottom: none; }
+
+    /* left: term */
+    .lex-term-col {}
+
+    .lex-term {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .lex-pos {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .lex-source {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey-dim);
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    /* right: definition */
+    .lex-def-col {}
+
+    .lex-def {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .lex-def strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .lex-def em {
+      color: var(--blue);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .lex-usage {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--blue-dim);
+      letter-spacing: 1px;
+      line-height: 1.7;
+      padding: 10px 16px;
+      border-left: 2px solid var(--border);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .lex-entry { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html" class="active">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <div class="page-header">
+      <div class="page-header-label">> LOADING TERM DEFINITIONS... VOCABULARY PARSED</div>
+      <h1>THE <span>LEXICON</span></h1>
+    </div>
+
+    <div class="container">
+
+      <div class="lexicon-intro reveal">
+        <p>These are not industry buzzwords. They are the specific terms that appear repeatedly across the published work, the operational practice, and the leadership philosophy — each with the meaning they carry in context. Language that is used precisely creates systems that operate precisely.</p>
+      </div>
+
+      <!-- B -->
+      <div class="lex-letter reveal">B</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Built From<br>the Floor</div>
+          <div class="lex-pos">// ORIGIN DESCRIPTOR</div>
+          <div class="lex-source">See: About, Origin Story</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">Operational credibility earned through direct floor-level experience before transitioning to analytical or professional roles. The knowledge that formal education supplements but cannot replace — the understanding of how systems behave under real production conditions, accumulated through years of proximity to the work itself.</p>
+          <div class="lex-usage">"Built from the floor. Engineered from the top."</div>
+        </div>
+      </div>
+
+      <!-- C -->
+      <div class="lex-letter reveal">C</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Compound<br>Improvement</div>
+          <div class="lex-pos">// CI PHILOSOPHY // NOUN</div>
+          <div class="lex-source">See: Operating Principles, Legacy by Improvement</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">Improvement structured so that each resolved problem or constraint <em>removes the obstacle to the next improvement</em>. The opposite of isolated events: improvement that accelerates itself, where early gains create better conditions for later gains. The compounding of operational capability over time — not just incremental, but self-reinforcing.</p>
+          <div class="lex-usage">"Improvement isn't an event. It's a culture. The goal is a system that gets better without you in the room — one where every improvement creates the conditions for the next one."</div>
+        </div>
+      </div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">The Constraint</div>
+          <div class="lex-pos">// SYSTEMS TERM // NOUN</div>
+          <div class="lex-source">See: Beyond the Bottleneck</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The limiting factor in any system that determines maximum throughput — the bottleneck that governs what is possible before and after it is addressed. Constraints are rarely where they appear to be. The surface-level symptom (a slow machine, a long queue, a missed deadline) almost always points to a constraint that exists upstream in the system's design, not in the visible failure point.</p>
+          <div class="lex-usage">"The constraint is never just the machine."</div>
+        </div>
+      </div>
+
+      <!-- E -->
+      <div class="lex-letter reveal">E</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Eliminate<br>the Conditions</div>
+          <div class="lex-pos">// CORE OPERATING PHILOSOPHY</div>
+          <div class="lex-source">See: Manifesto, About</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The operating philosophy of attacking root causes rather than symptoms — not fixing what breaks but <em>redesigning the environment in which the break occurs</em>. Problems repeat because the conditions that produce them remain unchanged. The work is not to resolve individual failures but to engineer out the conditions that make those failures possible.</p>
+          <div class="lex-usage">"I don't fix problems. I eliminate the conditions that create them."</div>
+        </div>
+      </div>
+
+      <!-- G -->
+      <div class="lex-letter reveal">G</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">The Gap</div>
+          <div class="lex-pos">// DIAGNOSTIC CONCEPT // NOUN</div>
+          <div class="lex-source">See: About, Operating Philosophy</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The measurable distance between what a system <strong>believes it is doing</strong> and what it is <em>actually doing</em>. Every inefficiency lives inside this gap — between the documented process and the lived one, between the stated standard and the practiced one, between performance as reported and performance as measured. Closing the gap is the starting condition for every improvement that follows.</p>
+          <div class="lex-usage">"The question I ask at the start of every engagement isn't 'what's broken.' It's 'what does this system think it's supposed to do — and what does it actually do?'"</div>
+        </div>
+      </div>
+
+      <!-- L -->
+      <div class="lex-letter reveal">L</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Legacy</div>
+          <div class="lex-pos">// LEADERSHIP CONCEPT // NOUN</div>
+          <div class="lex-source">See: Legacy by Improvement, Ethics</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The operational evidence of leadership. <em>What continues running correctly — and continues improving — after the leader has left the room.</em> Legacy is not a monument; it is a system that does not require a specific person to function. The measure of genuine organizational impact is whether the culture holds without the individual who built it.</p>
+          <div class="lex-usage">"What you build should outlast your presence in it."</div>
+        </div>
+      </div>
+
+      <!-- S -->
+      <div class="lex-letter reveal">S</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Standard Work</div>
+          <div class="lex-pos">// CI TERM // NOUN</div>
+          <div class="lex-source">See: Skill Nodes, Doctrine</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The documented, defined, repeatable baseline that makes variation visible and improvement measurable. Standard work is not bureaucracy — it is the foundation against which deviation can be identified and corrected. A system without a defined standard cannot be improved because there is no baseline to measure against. Defining the standard is the prerequisite to removing variation.</p>
+        </div>
+      </div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Systems vs.<br>Heroics</div>
+          <div class="lex-pos">// ORGANIZATIONAL CONCEPT</div>
+          <div class="lex-source">See: Doctrine, Leadership Oath</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The distinction between organizations that function because of <em>designed systems</em> versus those that function because of <strong>extraordinary individual effort</strong>. Heroics are not scalable, transferable, or sustainable — they create single points of failure disguised as high performance. Real organizational excellence is a system that holds under normal conditions without requiring specific people to perform extraordinarily.</p>
+          <div class="lex-usage">"My leadership must leave systems stronger than I found them."</div>
+        </div>
+      </div>
+
+      <!-- T -->
+      <div class="lex-letter reveal">T</div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Total Ownership</div>
+          <div class="lex-pos">// OPERATIONAL CONCEPT // NOUN</div>
+          <div class="lex-source">See: Origin Story, Maintenance Chapter</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">The acceptance of <em>complete responsibility for both the operation and the mechanical health of a system</em> — the deliberate elimination of the boundary between "how it runs" and "why it fails." Total ownership means there is no handoff between operator and maintainer: one person understands the machine at both levels simultaneously, which produces an entirely different class of insight about where failures originate and how to prevent them.</p>
+        </div>
+      </div>
+
+      <div class="lex-entry reveal">
+        <div class="lex-term-col">
+          <div class="lex-term">Tribal Knowledge</div>
+          <div class="lex-pos">// ORGANIZATIONAL RISK // NOUN</div>
+          <div class="lex-source">See: Troubleshooting App, Works</div>
+        </div>
+        <div class="lex-def-col">
+          <p class="lex-def">Institutional expertise held by individuals rather than captured in systems — the operational knowledge that lives in the heads of experienced team members and retires when they do. Tribal knowledge is the single most underestimated risk in industrial operations. Its accumulation is invisible; its loss is catastrophic. The antidote is not documentation alone, but <strong>structured knowledge capture during active operation</strong> — before the knowledge walks out the door.</p>
+          <div class="lex-usage">"Tribal knowledge retires. Systems don't have to."</div>
+        </div>
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

@@ -18,7 +18,32 @@
   <meta name="twitter:title" content="Code of Ethics — Adam Glenn Nicholson" />
   <meta name="twitter:description" content="A formalized leadership code — integrity, accountability, stewardship." />
   <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Dal-Tile Corporation"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
   <style>
     /* ---- ETHICS PAGE ---- */
 
@@ -372,9 +397,10 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="page-transition"></div>
   <canvas id="particle-canvas"></canvas>
-  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
 
   <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
   <div class="cursor-ring"></div>
@@ -388,15 +414,26 @@
       <li><a href="experience.html">Experience</a></li>
       <li><a href="works.html">Works</a></li>
       <li><a href="ethics.html" class="active">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
-  <main class="page-wrapper">
+  <main class="page-wrapper" id="main-content">
 
     <div class="page-header">
       <div class="page-header-label" id="ethics-header-label">> ACCESSING CLASSIFIED DOCUMENT... DECRYPTING...</div>
@@ -599,6 +636,7 @@
 
     <footer>
       <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
       <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
     </footer>
 
@@ -608,7 +646,7 @@
     <div class="terminal-window">
       <div class="terminal-titlebar">
         <span>AGN // SECURE TERMINAL</span>
-        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
       </div>
       <div class="terminal-body" id="terminal-body">
         <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
@@ -616,7 +654,7 @@
       </div>
       <div class="terminal-input-row">
         <span class="terminal-prompt">AGN://&gt;</span>
-        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
       </div>
     </div>
   </div>
@@ -631,11 +669,11 @@
         <div class="chat-message assistant"><strong>AI INTERFACE — IN DEVELOPMENT</strong><br>Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a></div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
         <button class="chat-send" id="chat-send">SEND</button>
       </div>
     </div>
-    <button class="chat-toggle" id="chat-toggle">⬡</button>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
   </div>
 
   <script src="js/particles.js"></script>

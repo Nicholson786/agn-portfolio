@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Doctrine — Adam Glenn Nicholson</title>
+  <meta name="description" content="The operational frameworks of Adam Glenn Nicholson — The Compound Model, safety culture maturity, leadership without title, and the case for systems over heroics." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/doctrine.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Doctrine — Adam Glenn Nicholson" />
+  <meta property="og:description" content="The operational frameworks: The Compound Model, safety culture maturity, leadership without title." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/doctrine.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": { "@type": "Organization", "name": "Dal-Tile Corporation" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- DOCTRINE PAGE ---- */
+
+    .doctrine-intro {
+      max-width: 700px;
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doctrine-intro p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* DOCTRINE SECTION */
+    .doctrine-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doctrine-section:last-of-type { border-bottom: none; }
+
+    /* ---- THE COMPOUND MODEL ---- */
+    .compound-model {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      position: relative;
+    }
+
+    .compound-stage {
+      background: var(--panel);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .compound-stage:hover { background: var(--panel-2); }
+
+    .compound-stage::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--blue);
+      transition: width 0.4s ease;
+    }
+
+    .compound-stage:hover::after { width: 100%; }
+
+    .stage-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--grey-dim);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .stage-name {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .stage-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .stage-book {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    /* Arrow connector between stages */
+    .compound-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--blue);
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* LEADERSHIP WITHOUT TITLE */
+    .lwt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .lwt-card {
+      background: var(--dark-2);
+      padding: 32px 28px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .lwt-card:hover { background: var(--panel); }
+
+    .lwt-role {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .lwt-org {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--blue);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .lwt-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* SAFETY CULTURE MATURITY */
+    .safety-curve {
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .curve-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .curve-level {
+      padding: 32px 24px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .curve-level:nth-child(1) { background: rgba(255,58,58,0.04); }
+    .curve-level:nth-child(2) { background: rgba(0,170,255,0.04); }
+    .curve-level:nth-child(3) { background: rgba(0,238,255,0.05); }
+    .curve-level:nth-child(4) { background: rgba(0,255,136,0.05); }
+
+    .curve-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--grey-dim);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .curve-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .curve-level:nth-child(1) .curve-name { color: #ff6666; }
+    .curve-level:nth-child(2) .curve-name { color: var(--blue); }
+    .curve-level:nth-child(3) .curve-name { color: var(--cyan); }
+    .curve-level:nth-child(4) .curve-name { color: var(--green); }
+
+    .curve-desc {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* SYSTEMS VS HEROICS */
+    .svh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .svh-col {
+      padding: 40px 32px;
+    }
+
+    .svh-col.heroics { background: rgba(255,58,58,0.03); }
+    .svh-col.systems  { background: rgba(0,170,255,0.04); }
+
+    .svh-header {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .svh-col.heroics .svh-header { color: #ff6666; }
+    .svh-col.systems  .svh-header { color: var(--green); }
+
+    .svh-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      padding: 8px 0 8px 16px;
+      border-bottom: 1px solid rgba(0,170,255,0.05);
+      position: relative;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .svh-item:last-child { border-bottom: none; }
+
+    .svh-item::before {
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+    }
+
+    .svh-col.heroics .svh-item::before { content: '✗'; color: #ff6666; }
+    .svh-col.systems  .svh-item::before { content: '✓'; color: var(--green); }
+
+    @media (max-width: 1024px) {
+      .compound-model { grid-template-columns: repeat(2, 1fr); }
+      .curve-track    { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .compound-model { grid-template-columns: 1fr; }
+      .lwt-grid       { grid-template-columns: 1fr; }
+      .curve-track    { grid-template-columns: 1fr; }
+      .svh-grid       { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html" class="active">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <div class="page-header">
+      <div class="page-header-label">> LOADING OPERATIONAL FRAMEWORKS... DOCTRINE RETRIEVED</div>
+      <h1>DOCTRINE <span>&amp; FRAMEWORKS</span></h1>
+    </div>
+
+    <div class="container">
+
+      <div class="doctrine-intro reveal">
+        <p>These are not theories. They are frameworks extracted from the work — distilled from seventeen years of operational reality, formalized through two published books, a doctoral program, and three deployed applications. Each one has a real-world proof record attached.</p>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1: THE COMPOUND MODEL
+           ============================================================ -->
+      <div class="doctrine-section">
+        <div class="section-label reveal">// SIGNATURE CI FRAMEWORK</div>
+        <div class="section-title reveal">THE <span>COMPOUND MODEL</span></div>
+        <p class="reveal" style="font-family:var(--font-body);font-size:16px;color:var(--grey);line-height:1.9;font-weight:300;max-width:760px;margin-top:12px;">
+          A four-stage maturity model connecting the two published books into a single CI progression. <em>Beyond the Bottleneck</em> covers Stages 1–2 — seeing the system and engineering past its constraints. <em>Legacy by Improvement</em> covers Stages 3–4 — building the culture that makes improvement self-sustaining. The model maps where any organization sits in its CI journey and what the next transition requires.
+        </p>
+
+        <div class="compound-model reveal">
+
+          <div class="compound-stage">
+            <div class="bracket-tl"></div>
+            <div class="stage-num">[ STAGE 0 ]</div>
+            <div class="stage-name">Reactive</div>
+            <p class="stage-desc">Systems run on workarounds and heroics. Problems are solved individually, not systematically. Firefighting is the operating model. The gap between documented performance and actual performance is unknown and unmeasured.</p>
+          </div>
+
+          <div class="compound-stage">
+            <div class="bracket-tl"></div>
+            <div class="stage-num">[ STAGE 1 ]</div>
+            <div class="stage-name">Assess</div>
+            <p class="stage-desc">The gap becomes visible. Root cause investigation replaces reactive response. Observation before action — the standard question is no longer "what broke?" but "what does this system think it's doing?" Standards are defined. Baselines are established.</p>
+            <div class="stage-book">// BEYOND THE BOTTLENECK →</div>
+          </div>
+
+          <div class="compound-stage">
+            <div class="bracket-tl"></div>
+            <div class="stage-num">[ STAGE 2 ]</div>
+            <div class="stage-name">Engineer</div>
+            <p class="stage-desc">Systems are redesigned, not just repaired. Variation is measured and removed. Standard work is enforced. PM plans are built and executed. The constraint is addressed at the design level. Solutions that don't change the underlying design don't change the underlying result.</p>
+            <div class="stage-book">// BEYOND THE BOTTLENECK →</div>
+          </div>
+
+          <div class="compound-stage">
+            <div class="bracket-tl"></div>
+            <div class="stage-num">[ STAGE 3 ]</div>
+            <div class="stage-name">Compound</div>
+            <p class="stage-desc">Each improvement creates conditions for the next. The culture of getting better becomes self-sustaining. Knowledge is captured and replicated. The system improves without requiring the original practitioner in the room. Legacy replaces dependency.</p>
+            <div class="stage-book">// LEGACY BY IMPROVEMENT →</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 2: LEADERSHIP WITHOUT THE TITLE
+           ============================================================ -->
+      <div class="doctrine-section">
+        <div class="section-label reveal">// LEADERSHIP WITHOUT THE TITLE</div>
+        <div class="section-title reveal">AUTHORITY <span>IS NOT THE PREREQUISITE</span></div>
+        <p class="reveal" style="font-family:var(--font-body);font-size:16px;color:var(--grey);line-height:1.9;font-weight:300;max-width:760px;margin-top:12px;">
+          Every role below demonstrates leadership exercised without organizational hierarchy — elected by peers, earned by contribution, fulfilled through obligation. The pattern repeated across different institutions over more than a decade: leadership is recognized, then accepted, then discharged completely.
+        </p>
+
+        <div class="lwt-grid">
+
+          <div class="lwt-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="lwt-role">Past Master</div>
+            <div class="lwt-org">// MASONIC LODGE</div>
+            <p class="lwt-desc">Elected to the highest officer position of the lodge — the Worshipful Master. Responsible for the ritual, culture, direction, and wellbeing of every member under that charge. Then stepped down. Continued serving. The Masonic model: rise to lead, fulfill the obligation completely, become a resource for those who follow.</p>
+          </div>
+
+          <div class="lwt-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="lwt-role">Senior Director</div>
+            <div class="lwt-org">// MASONIC COMMANDERY</div>
+            <p class="lwt-desc">Leadership extended into the Commandery — a separate Masonic body with its own structure and obligations. Senior Director is an officer role within a governance structure built on earned trust, not appointment.</p>
+          </div>
+
+          <div class="lwt-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="lwt-role">FTZ Subzone Director</div>
+            <div class="lwt-org">// VALLOUREC // FOREIGN TRADE ZONE</div>
+            <p class="lwt-desc">Administered Foreign Trade Zone compliance at multinational manufacturing scale. The FTZ Subzone Director role carries genuine legal and financial consequence — zero compliance failures over the full tenure. Authority derived from regulatory designation, not organizational seniority.</p>
+          </div>
+
+          <div class="lwt-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="lwt-role">PTK Coordinator</div>
+            <div class="lwt-org">// PHI THETA KAPPA // CONNORS STATE COLLEGE</div>
+            <p class="lwt-desc">Coordinator for the Phi Theta Kappa chapter at Connors State College — the international honor society for two-year colleges. Completed thirteen years into an active operational career. Leadership showing up where it's needed, regardless of when in a career the stage appears.</p>
+          </div>
+
+          <div class="lwt-card reveal">
+            <div class="bracket-tl"></div>
+            <div class="lwt-role">VP, Student Alumni Association</div>
+            <div class="lwt-org">// UNIVERSITY OF SOUTHERN MISSISSIPPI</div>
+            <p class="lwt-desc">Vice President of the Student Alumni Association at USM. The same leadership instinct from the production floor, extended into the academic community. Five distinct leadership roles across five different institutions — none of them assigned.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 3: INDUSTRY 4.0 → 5.0
+           ============================================================ -->
+      <div class="doctrine-section">
+        <div class="section-label reveal">// DEPLOYED PROOF</div>
+        <div class="section-title reveal">INDUSTRY 4.0 <span>→ 5.0</span></div>
+        <p class="reveal" style="font-family:var(--font-body);font-size:16px;color:var(--grey);line-height:1.9;font-weight:300;max-width:760px;margin-top:12px;">
+          Industry 4.0 is about connecting systems — sensors, data, digital visibility. Industry 5.0 is about augmenting human judgment with those systems — AI not replacing the practitioner, but extending what the practitioner can see and decide. The transition between them is not theoretical here. It's already deployed.
+        </p>
+
+        <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:32px;">
+          <div style="background:var(--panel);padding:36px 32px;position:relative;">
+            <div class="bracket-tl"></div>
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--blue);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">Industry 4.0 // The Foundation</div>
+            <p style="font-family:var(--font-body);font-size:15px;color:var(--grey);line-height:1.8;font-weight:300;">Digital data capture. Real-time visibility. Elimination of paper-based processes. The three deployed applications represent this layer: Safety communication digitized and instantly visible to leadership, EMS compliance continuously monitored instead of periodically audited, troubleshooting knowledge captured and replicated instead of held in individual memory.</p>
+          </div>
+          <div style="background:var(--panel);padding:36px 32px;position:relative;">
+            <div class="bracket-tl"></div>
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">Industry 5.0 // The Edge</div>
+            <p style="font-family:var(--font-body);font-size:15px;color:var(--grey);line-height:1.8;font-weight:300;">AI tools integrated into operational improvement workflows — not as a replacement for practitioner judgment, but as an accelerant for it. Active engagement with IISE on how AI changes the shape of industrial engineering practice. The Troubleshooting App is already a precursor: structured knowledge capture that AI can augment and surface on demand.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 4: SAFETY CULTURE MATURITY CURVE
+           ============================================================ -->
+      <div class="doctrine-section">
+        <div class="section-label reveal">// SAFETY CULTURE FRAMEWORK</div>
+        <div class="section-title reveal">SAFETY CULTURE <span>MATURITY CURVE</span></div>
+        <p class="reveal" style="font-family:var(--font-body);font-size:16px;color:var(--grey);line-height:1.9;font-weight:300;max-width:760px;margin-top:12px;">
+          Safety culture does not jump from reactive to excellent. It matures through predictable stages. Each stage has a characteristic behavior, a characteristic blind spot, and a specific intervention that moves it forward. The Safety Communication App was designed to accelerate this transition by removing the friction between observation and leadership awareness.
+        </p>
+
+        <div class="safety-curve reveal">
+          <div class="curve-track">
+
+            <div class="curve-level">
+              <div class="curve-num">[ LEVEL 1 ]</div>
+              <div class="curve-name">Reactive</div>
+              <p class="curve-desc">Safety is about avoiding punishment after something goes wrong. Incidents trigger response. The system has no proactive capability — it only processes failures that have already occurred. Leadership awareness is delayed or filtered.</p>
+            </div>
+
+            <div class="curve-level">
+              <div class="curve-num">[ LEVEL 2 ]</div>
+              <div class="curve-name">Compliant</div>
+              <p class="curve-desc">Systems exist — inspection checklists, incident reports, training logs — but they are externally motivated. Safety is what you do before an audit. Compliance is theater until the culture internalizes the standard. The paperwork is present; the mindset is not.</p>
+            </div>
+
+            <div class="curve-level">
+              <div class="curve-num">[ LEVEL 3 ]</div>
+              <div class="curve-name">Proactive</div>
+              <p class="curve-desc">Hazards are identified before incidents occur. Near-misses are reported, analyzed, and acted on. Leadership is visible in the safety process — not just in response to failures. The Safety Communication App was built specifically to close the gap between observation and this level of leadership visibility.</p>
+            </div>
+
+            <div class="curve-level">
+              <div class="curve-num">[ LEVEL 4 ]</div>
+              <div class="curve-name">Generative</div>
+              <p class="curve-desc">Safety is a value, not a program. The culture identifies and eliminates hazards continuously without external pressure or scheduled audits. Every team member is a safety system. The organization has internalized what the Reactive organization could only mandate. This is where the Compound Model and safety culture converge.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 5: SYSTEMS VS HEROICS
+           ============================================================ -->
+      <div class="doctrine-section">
+        <div class="section-label reveal">// ORGANIZATIONAL DESIGN</div>
+        <div class="section-title reveal">SYSTEMS <span>VS. HEROICS</span></div>
+        <p class="reveal" style="font-family:var(--font-body);font-size:16px;color:var(--grey);line-height:1.9;font-weight:300;max-width:760px;margin-top:12px;">
+          Real organizational excellence is not high individual performance. It is a system that holds up correctly under normal conditions without requiring specific people to perform extraordinarily. Heroics are not scalable. They are single points of failure wearing the costume of exceptional performance.
+        </p>
+
+        <div class="svh-grid reveal">
+
+          <div class="svh-col heroics">
+            <div class="bracket-tl"></div>
+            <div class="svh-header">Heroics-Dependent</div>
+            <div class="svh-item">Performance is tied to specific individuals who cannot be replaced without degradation</div>
+            <div class="svh-item">Knowledge lives in people, not systems — and retires when they do</div>
+            <div class="svh-item">Standards exist on paper but are maintained through enforcement, not design</div>
+            <div class="svh-item">Crises reveal the system's dependence rather than its resilience</div>
+            <div class="svh-item">Leadership presence is required to sustain performance</div>
+            <div class="svh-item">Improvement events happen but do not compound</div>
+          </div>
+
+          <div class="svh-col systems">
+            <div class="bracket-tl"></div>
+            <div class="svh-header">Systems-Dependent</div>
+            <div class="svh-item">Performance is consistent regardless of which individuals are present</div>
+            <div class="svh-item">Knowledge is captured, documented, and replicated — not stored in memory</div>
+            <div class="svh-item">Standards are enforced by the system's design, not by individual vigilance</div>
+            <div class="svh-item">Crises reveal the system's resilience rather than its fragility</div>
+            <div class="svh-item">Leadership absence does not degrade performance</div>
+            <div class="svh-item">Each improvement creates conditions for the next — compound effect over time</div>
+          </div>
+
+        </div>
+
+        <div class="reveal" style="margin-top:40px;text-align:center;">
+          <div style="font-family:var(--font-body);font-size:clamp(18px,2.5vw,24px);font-weight:300;color:var(--white);font-style:italic;max-width:640px;margin:0 auto;padding-left:24px;border-left:3px solid var(--blue);text-align:left;">
+            "My leadership must leave systems stronger than I found them."
+          </div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);letter-spacing:3px;margin-top:20px;">— LEADERSHIP OATH // ON RECORD</div>
+        </div>
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

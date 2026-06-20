@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Origin — Adam Glenn Nicholson</title>
+  <meta name="description" content="The origin story of Adam Glenn Nicholson — from the manufacturing floor in 2008 to process engineer. Built from the bottom up, compounded over seventeen years." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/origin.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Origin — Adam Glenn Nicholson" />
+  <meta property="og:description" content="From the manufacturing floor in 2008 to process engineer. Built from the bottom up." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/origin.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": { "@type": "Organization", "name": "Dal-Tile Corporation" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- ORIGIN STORY ---- */
+
+    /* Large ghost year behind each section */
+    .origin-year-ghost {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(100px, 20vw, 220px);
+      font-weight: 900;
+      color: rgba(0,170,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -4px;
+    }
+
+    /* Each story beat takes most of the viewport */
+    .origin-section {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .origin-section:last-child { border-bottom: none; }
+
+    /* Alternate side accent */
+    .origin-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--blue);
+      transition: height 0.8s ease;
+    }
+
+    .origin-section.visible::before { height: 100%; }
+
+    .origin-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Child elements animate in when section gets .visible */
+    .origin-beat-label,
+    .origin-headline,
+    .origin-body,
+    .origin-detail {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .origin-section.visible .origin-beat-label { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+    .origin-section.visible .origin-headline   { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+    .origin-section.visible .origin-body       { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+    .origin-section.visible .origin-detail     { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
+
+    .origin-beat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--cyan);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .origin-headline {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4.5vw, 52px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+
+    .origin-headline span { color: var(--blue); }
+
+    .origin-body {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .origin-body em {
+      color: var(--white);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .origin-body strong {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .origin-detail {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--blue);
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      background: var(--blue-glow2);
+      margin-top: 8px;
+    }
+
+    /* CLOSING section — full blue accent */
+    .origin-close {
+      background: var(--dark-3);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .origin-close p {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1.5;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .origin-close p span { color: var(--blue); }
+
+    @media (max-width: 768px) {
+      .origin-section { min-height: 70vh; padding: 64px 0; }
+      .origin-year-ghost { font-size: clamp(80px, 25vw, 120px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .origin-beat-label,
+      .origin-headline,
+      .origin-body,
+      .origin-detail {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .origin-section::before { height: 100% !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html" class="active">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <div class="page-header">
+      <div class="page-header-label">> ACCESSING ORIGIN RECORD... 2008 — PRESENT</div>
+      <h1>ORIGIN <span>STORY</span></h1>
+    </div>
+
+    <div class="container" style="padding-top:8px; padding-bottom:0;">
+      <p style="font-family:var(--font-body);font-size:17px;color:var(--grey);line-height:1.9;font-weight:300;font-style:italic;padding:48px 0 40px;border-bottom:1px solid var(--border);max-width:680px;">
+        This isn't a resume. It's a record of how a practitioner gets built — through accumulation, not assignment. Every role created the conditions for the next one. None of it was accidental.
+      </p>
+    </div>
+
+    <!-- ============================================================
+         BEAT 1 — THE OPERATOR
+         ============================================================ -->
+    <section class="origin-section" id="beat-1">
+      <div class="origin-year-ghost">2008</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER ONE</div>
+          <h2 class="origin-headline">THE FLOOR<br>IS THE <span>LAB.</span></h2>
+          <p class="origin-body">
+            The first position isn't in an office. It's on the production floor of one of the largest ceramic tile manufacturers in North America. 2008. Dal-Tile. Operator.
+          </p>
+          <p class="origin-body">
+            Operations at industrial scale teaches things that no curriculum provides: <em>how systems behave under constraint</em>, what the difference between a documented process and a lived one looks like, and exactly how much work it takes to hold production targets when the standard isn't holding. The floor is where the instinct for improvement comes from. It doesn't come from a textbook.
+          </p>
+          <div class="origin-detail">DAL-TILE CORPORATION // MUSKOGEE, OK // 2008</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 2 — TEAM LEAD
+         ============================================================ -->
+    <section class="origin-section" id="beat-2">
+      <div class="origin-year-ghost">↑</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER TWO</div>
+          <h2 class="origin-headline">EARN THE TEAM.<br>THEN <span>LEAD IT.</span></h2>
+          <p class="origin-body">
+            Leadership at the floor level isn't granted. It's recognized. The team notices who they look to when things go wrong. That pattern, repeated under enough pressure, becomes a role.
+          </p>
+          <p class="origin-body">
+            Rising to lead a production team meant owning outcomes, not just tasks. Cross-functional coordination under time pressure. Accountability that didn't stop at the shift change. The obligation wasn't to the title — it was to the people and to the process. That's the order that matters.
+          </p>
+          <div class="origin-detail">PRODUCTION TEAM LEAD // OPERATIONAL CREDIBILITY ESTABLISHED</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 3 — TOTAL OWNERSHIP
+         ============================================================ -->
+    <section class="origin-section" id="beat-3">
+      <div class="origin-year-ghost">OWN</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER THREE</div>
+          <h2 class="origin-headline">TOTAL <span>OWNERSHIP.</span><br>ALL OF IT.</h2>
+          <p class="origin-body">
+            The inflection point is a decision, not an assignment. Becoming responsible for a specific piece of industrial equipment — <em>how it runs and why it fails</em> — meant accepting something most operators don't: that the boundary between "operations" and "maintenance" is a human invention, not a mechanical one.
+          </p>
+          <p class="origin-body">
+            <strong>Total ownership means you don't call someone else when it breaks.</strong> You understand the machine well enough to run it optimally and to know when it's beginning to fail before it does. That dual perspective — operator-level and technician-level, simultaneously — is what makes the difference between someone who runs a machine and someone who understands a system.
+          </p>
+          <div class="origin-detail">OPERATIONS + MAINTENANCE // ONE OWNER // ZERO HANDOFFS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 4 — INTO MAINTENANCE
+         ============================================================ -->
+    <section class="origin-section" id="beat-4">
+      <div class="origin-year-ghost">2019</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER FOUR</div>
+          <h2 class="origin-headline">INTO <span>MAINTENANCE.</span><br>ALL THE WAY.</h2>
+          <p class="origin-body">
+            That total-ownership mindset became a career trajectory. If you know a machine well enough to operate it at peak performance and diagnose failure before it happens, <em>you belong in maintenance</em>.
+          </p>
+          <p class="origin-body">
+            Three years as an industrial maintenance technician at Dal-Tile. Hands on equipment. Diagnosing under time pressure. Repairing correctly the first time. Coordinating spare parts to minimize downtime impact. Working cross-functionally with operations so that quality of repair never gets sacrificed for speed of restart.
+          </p>
+          <p class="origin-body">
+            What propelled the transition wasn't a vacancy — it was a body of knowledge that said: this is where I belong next. That instinct has been right every time it's been followed.
+          </p>
+          <div class="origin-detail">DAL-TILE // INDUSTRIAL MAINTENANCE TECHNICIAN // 2019–2022</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 5 — EDUCATION
+         ============================================================ -->
+    <section class="origin-section" id="beat-5">
+      <div class="origin-year-ghost">EDU</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER FIVE</div>
+          <h2 class="origin-headline">EDUCATION FOLLOWS<br><span>EXPERIENCE.</span></h2>
+          <p class="origin-body">
+            The degrees didn't come first. They came after a decade of operational reality — and they were better for it.
+          </p>
+          <p class="origin-body">
+            An Associate in Arts from Connors State College: completed thirteen years into a career already underway, because the credential mattered enough to go back for it. A BS in Industrial Engineering Technology from the University of Southern Mississippi: <em>the degree that named what the floor had already been teaching</em>. An MS in Engineering Management from the University of Oklahoma: turning operational instinct into formal systems framework.
+          </p>
+          <p class="origin-body">
+            Every credential formalized something that experience had already proven. That sequence — prove it, then name it — is the only one that holds under real operational pressure.
+          </p>
+          <div class="origin-detail">AA // BS INDUSTRIAL ENGINEERING TECHNOLOGY // MS ENGINEERING MANAGEMENT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 6 — PROFESSIONAL TRANSITION (Vallourec)
+         ============================================================ -->
+    <section class="origin-section" id="beat-6">
+      <div class="origin-year-ghost">2022</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER SIX</div>
+          <h2 class="origin-headline">THE PROFESSIONAL<br><span>TRANSITION.</span></h2>
+          <p class="origin-body">
+            Vallourec. A French multinational, world leader in premium tubular solutions for the energy sector. The starting condition: <em>no formal maintenance process</em>.
+          </p>
+          <p class="origin-body">
+            The technical knowledge accumulated over fourteen years on the floor made this possible: entering as Maintenance Planner, building the maintenance system from zero using SAP CMMS as the operational backbone, leading a thirteen-technician team through the transition from reactive to predictive maintenance, achieving and sustaining a 90% PM completion rate. Then taking on Project Manager and Foreign Trade Zone Administrator responsibilities simultaneously — running compliance with genuine legal consequence at multinational scale.
+          </p>
+          <p class="origin-body">
+            The professional role didn't come from a classroom. It came from the floor, through the shop, through the maintenance bay, through the systems built from nothing. <strong>That's the sequence.</strong>
+          </p>
+          <div class="origin-detail">VALLOUREC // MAINTENANCE PLANNER → SUPERVISOR → PM // FTZ ADMIN // 2022–2025</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BEAT 7 — PROCESS ENGINEER (closing the loop)
+         ============================================================ -->
+    <section class="origin-section" id="beat-7">
+      <div class="origin-year-ghost">2025</div>
+      <div class="container">
+        <div class="origin-content">
+          <div class="origin-beat-label">// CHAPTER SEVEN</div>
+          <h2 class="origin-headline">THEY KNOW WHAT<br>THIS LOOKS LIKE.<br><span>SO DO I.</span></h2>
+          <p class="origin-body">
+            Returning to Dal-Tile as a Process Engineer closes a loop that seventeen years of compound experience built. The organization knows what operational excellence at this level looks like. <em>So does the person they brought back to design it.</em>
+          </p>
+          <p class="origin-body">
+            Current work integrates everything: floor-level credibility, maintenance system architecture, project management discipline, foreign trade compliance, published CI frameworks, active doctoral research, and three operational applications built from scratch to address gaps that no off-the-shelf solution was solving.
+          </p>
+          <p class="origin-body">
+            This is not a career that was planned from the top down. It was built from the floor up — one compound improvement at a time.
+          </p>
+          <div class="origin-detail">DAL-TILE CORPORATION // PROCESS ENGINEER // 2025 — PRESENT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <div class="origin-close">
+      <div class="container">
+        <p class="reveal">"This is what <span>seventeen years</span> of deliberate, compounding improvement looks like."</p>
+        <div style="margin-top:40px;" class="reveal">
+          <a href="about.html" class="btn"><span>[ OPERATOR PROFILE ]</span></a>
+          <a href="experience.html" class="btn btn-cyan" style="margin-left:16px;"><span>[ OPERATIONS LOG ]</span></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+  <script>
+    /* Trigger cinematic reveal on origin sections */
+    const originSections = document.querySelectorAll('.origin-section');
+    const originObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          originObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    originSections.forEach(s => originObserver.observe(s));
+  </script>
+</body>
+</html>

@@ -124,6 +124,30 @@
     updateToggleUI();
   }
 
+  /* --- ASSEMBLY-COMPLETE SOUND (called by boot.js when name forms) --- */
+  window.agnPlayAssemble = function () {
+    if (!soundEnabled) return;
+    initAudio();
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+
+    // Rising dual-tone sweep — "power synthesis complete"
+    [[300, 1100, 0.06, 0.65], [480, 1750, 0.04, 0.55]].forEach(([f0, f1, vol, dur]) => {
+      const osc  = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(f0, now);
+      osc.frequency.exponentialRampToValueAtTime(f1, now + dur * 0.7);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(vol, now + 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + dur);
+    });
+  };
+
   // Attach click/hover sounds to interactive elements
   document.addEventListener('click', (e) => {
     if (e.target.closest('a, button, .btn')) {

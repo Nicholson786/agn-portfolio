@@ -18,7 +18,32 @@
   <meta name="twitter:title" content="Adam Glenn Nicholson — Process Engineer & Systems Architect" />
   <meta name="twitter:description" content="17+ years engineering continuous improvement. Published author. Lean Six Sigma Black Belt." />
   <meta name="twitter:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Dal-Tile Corporation"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
   <style>
     /* ---- HOME PAGE SPECIFIC ---- */
 
@@ -109,50 +134,94 @@
       margin-bottom: 80px;
     }
 
-    /* HERO SIDE PANEL — right side decoration */
-    .hero-side {
+    /* ARC REACTOR CONTAINER */
+    .hero-reactor {
       position: absolute;
       right: 0; top: 0;
       height: 100%;
-      width: 320px;
-      border-left: 1px solid var(--border);
+      width: 430px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      padding: 40px 32px;
-      background: rgba(15,26,46,0.4);
-      backdrop-filter: blur(4px);
+      pointer-events: none;
+      overflow: visible;
     }
 
-    .hero-side-row {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(0,170,255,0.08);
+    #reactor-canvas {
+      display: block;
+      flex-shrink: 0;
     }
 
-    .hero-side-row:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
+    /* FLOATING STAT LABELS */
+    .reactor-stats {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
     }
 
-    .hero-side-key {
+    .reactor-stat {
+      position: absolute;
       font-family: var(--font-mono);
-      font-size: 9px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .rs-key {
+      display: block;
       color: var(--grey);
-      letter-spacing: 3px;
-      margin-bottom: 4px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 2px;
+      opacity: 0.8;
     }
 
-    .hero-side-val {
+    .rs-val         { color: var(--blue); }
+    .rs-val.green   { color: var(--green); }
+    .rs-green       { color: var(--green); font-size: 10px; font-family: var(--font-mono); }
+
+    /* Clock positions around the ring */
+    .rs-top       { top: 7%;    left: 50%;  transform: translateX(-50%); text-align: center; }
+    .rs-rt        { top: 22%;   right: 5%;  text-align: right; }
+    .rs-rb        { bottom: 26%; right: 5%; text-align: right; }
+    .rs-bot       { bottom: 7%; left: 50%;  transform: translateX(-50%); text-align: center; }
+    .rs-lb        { bottom: 26%; left: 5%; }
+    .rs-lt        { top: 22%;   left: 5%; }
+
+    /* NOW STRIP */
+    .now-strip {
+      background: var(--dark-3);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 80px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 20px;
       font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--blue);
-      letter-spacing: 1px;
-      line-height: 1.6;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-side-val.green { color: var(--green); }
-    .hero-side-val.white { color: var(--white); }
+    .now-key {
+      color: var(--cyan);
+      margin-right: 6px;
+    }
+
+    .now-item { color: var(--grey); }
+
+    .now-sep {
+      color: var(--grey-dim);
+      opacity: 0.4;
+    }
+
+    @media (max-width: 768px) {
+      .now-strip { padding: 10px 20px; gap: 6px 16px; font-size: 9px; }
+      .now-sep { display: none; }
+    }
 
     /* STATS */
     .stats-section { position: relative; z-index: 1; }
@@ -267,7 +336,7 @@
     }
 
     @media (max-width: 1100px) {
-      .hero-side { display: none; }
+      .hero-reactor { display: none; }
       .featured-callout { grid-template-columns: 1fr; gap: 40px; padding: 48px 40px; }
       .divider-band { padding: 16px 40px; }
     }
@@ -282,9 +351,10 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="page-transition" class="revealed"></div>
   <canvas id="particle-canvas"></canvas>
-  <button id="sound-toggle">[ AUDIO: OFF ]</button>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
 
   <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
   <div class="cursor-ring"></div>
@@ -303,15 +373,35 @@
       <li><a href="experience.html">Experience</a></li>
       <li><a href="works.html">Works</a></li>
       <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
   </nav>
 
   <main class="page-wrapper" id="main-content" style="opacity:0;">
+
+    <!-- NOW STRIP -->
+    <div class="now-strip">
+      <span class="now-item"><span class="now-key">CURRENTLY</span>FLOOR-LEVEL SAFETY REPORTING SYSTEM</span>
+      <span class="now-sep">//</span>
+      <span class="now-item"><span class="now-key">RESEARCHING</span>AI INTEGRATION IN OPERATIONS</span>
+      <span class="now-sep">//</span>
+      <span class="now-item"><span class="now-key">NEXT</span>DBA DISSERTATION</span>
+    </div>
 
     <!-- HERO -->
     <section class="hero">
@@ -352,35 +442,34 @@
 
       </div>
 
-      <!-- RIGHT PANEL -->
-      <div class="hero-side">
-        <div class="hero-side-row">
-          <div class="hero-side-key">CURRENT STATUS</div>
-          <div class="hero-side-val green">ACTIVE // OPTIMIZING</div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">DESIGNATION</div>
-          <div class="hero-side-val white">Process Engineer<br>Dal-Tile Corporation</div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">FRAMEWORK</div>
-          <div class="hero-side-val">LSS Black Belt<br>DMAIC // Kaizen</div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">ACADEMIC</div>
-          <div class="hero-side-val">DBA Candidate<br>Edgewood University</div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">PUBLISHED WORKS</div>
-          <div class="hero-side-val white">2 Books // Amazon</div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">DEPLOYED APPS</div>
-          <div class="hero-side-val">3 Built // <span style="color:var(--green)">1 LIVE</span></div>
-        </div>
-        <div class="hero-side-row">
-          <div class="hero-side-key">TERMINAL ACCESS</div>
-          <div class="hero-side-val" style="color:var(--grey);font-size:10px;">CTRL + ` TO OPEN</div>
+      <!-- ARC REACTOR -->
+      <div class="hero-reactor" id="hero-reactor" aria-hidden="true">
+        <canvas id="reactor-canvas"></canvas>
+        <div class="reactor-stats">
+          <div class="reactor-stat rs-top">
+            <span class="rs-key">STATUS</span>
+            <span class="rs-val green">ACTIVE // OPTIMIZING</span>
+          </div>
+          <div class="reactor-stat rs-rt">
+            <span class="rs-key">DESIGNATION</span>
+            <span class="rs-val">Process Engineer<br>Dal-Tile Corporation</span>
+          </div>
+          <div class="reactor-stat rs-rb">
+            <span class="rs-key">FRAMEWORK</span>
+            <span class="rs-val">LSS Black Belt<br>DMAIC // Kaizen</span>
+          </div>
+          <div class="reactor-stat rs-bot">
+            <span class="rs-key">ACADEMIC</span>
+            <span class="rs-val">DBA Candidate<br>Edgewood University</span>
+          </div>
+          <div class="reactor-stat rs-lb">
+            <span class="rs-key">PUBLISHED</span>
+            <span class="rs-val">2 Books // Amazon</span>
+          </div>
+          <div class="reactor-stat rs-lt">
+            <span class="rs-key">APPS</span>
+            <span class="rs-val">3 Built // <span class="rs-green">1 LIVE</span></span>
+          </div>
         </div>
       </div>
 
@@ -493,6 +582,7 @@
 
     <footer>
       <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
       <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
     </footer>
 
@@ -503,7 +593,7 @@
     <div class="terminal-window">
       <div class="terminal-titlebar">
         <span>AGN // SECURE TERMINAL</span>
-        <button class="terminal-close" id="terminal-close-btn">[ CLOSE ]</button>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
       </div>
       <div class="terminal-body" id="terminal-body">
         <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
@@ -511,7 +601,7 @@
       </div>
       <div class="terminal-input-row">
         <span class="terminal-prompt">AGN://&gt;</span>
-        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
       </div>
     </div>
   </div>
@@ -530,11 +620,11 @@
         </div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." />
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
         <button class="chat-send" id="chat-send">SEND</button>
       </div>
     </div>
-    <button class="chat-toggle" id="chat-toggle">⬡</button>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
   </div>
 
   <script src="js/boot.js"></script>
@@ -542,5 +632,7 @@
   <script src="js/sound.js"></script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="js/reactor.js"></script>
 </body>
 </html>

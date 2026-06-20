@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGN // Build Log — Adam Glenn Nicholson</title>
+  <meta name="description" content="A record of milestones — deployments, publications, certifications, and operational achievements. The build log of Adam Glenn Nicholson." />
+  <meta name="theme-color" content="#00aaff" />
+  <link rel="canonical" href="https://agn-portfolio.onrender.com/buildlog.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Build Log — Adam Glenn Nicholson" />
+  <meta property="og:description" content="A record of deployments, publications, certifications, and operational achievements." />
+  <meta property="og:image" content="https://agn-portfolio.onrender.com/assets/og-image.png" />
+  <meta property="og:url" content="https://agn-portfolio.onrender.com/buildlog.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Glenn Nicholson",
+    "jobTitle": "Process Engineer",
+    "worksFor": { "@type": "Organization", "name": "Dal-Tile Corporation" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Connors State College" },
+      { "@type": "CollegeOrUniversity", "name": "University of Southern Mississippi" },
+      { "@type": "CollegeOrUniversity", "name": "University of Oklahoma" },
+      { "@type": "CollegeOrUniversity", "name": "Edgewood University" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholson-adam/",
+      "https://www.amazon.com/dp/B0FTK95KY9",
+      "https://www.amazon.com/dp/B0FV8GQGXQ"
+    ],
+    "url": "https://agn-portfolio.onrender.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- BUILD LOG ---- */
+
+    .buildlog-intro {
+      max-width: 680px;
+      padding: 56px 0 32px;
+    }
+
+    .buildlog-intro p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--grey);
+      line-height: 1.9;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* YEAR BLOCK */
+    .log-year-block {
+      padding: 48px 0 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .log-year-block:first-of-type { border-top: none; }
+
+    .log-year-label {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      color: rgba(0,170,255,0.18);
+      letter-spacing: 6px;
+      margin-bottom: 24px;
+    }
+
+    /* INDIVIDUAL LOG ENTRY */
+    .log-entry {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,170,255,0.06);
+      position: relative;
+    }
+
+    .log-entry:last-child { border-bottom: none; }
+
+    .log-entry::before {
+      content: '';
+      position: absolute;
+      left: 148px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .log-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--grey);
+      letter-spacing: 1.5px;
+      padding-top: 4px;
+      padding-right: 16px;
+      line-height: 1.6;
+    }
+
+    .log-date .log-month {
+      display: block;
+      color: var(--blue);
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .log-body {
+      padding-left: 24px;
+    }
+
+    .log-type {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .log-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .log-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .log-desc strong { color: var(--white); font-weight: 600; }
+
+    .log-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      padding: 3px 8px;
+      border: 1px solid;
+      margin-top: 10px;
+    }
+
+    .log-badge.live    { color: var(--green); border-color: rgba(0,255,136,0.3); background: rgba(0,255,136,0.04); }
+    .log-badge.live::before { content:''; width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse-green 1.5s infinite; }
+    .log-badge.pub     { color: var(--blue);  border-color: var(--border); background: var(--blue-glow2); }
+    .log-badge.active  { color: var(--cyan);  border-color: var(--border-cyan); background: var(--cyan-glow); }
+    .log-badge.future  { color: var(--grey);  border-color: var(--grey-dim); }
+
+    /* PROJECTED entries are dimmed */
+    .log-entry.projected { opacity: 0.65; }
+    .log-entry.projected .log-date { color: var(--grey-dim); }
+
+    @media (max-width: 768px) {
+      .log-entry { grid-template-columns: 1fr; gap: 8px; }
+      .log-entry::before { display: none; }
+      .log-body { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-transition"></div>
+  <canvas id="particle-canvas"></canvas>
+  <button id="sound-toggle" aria-label="Toggle audio">[ AUDIO: OFF ]</button>
+
+  <div class="cursor"><div class="cursor-dot"></div><div class="cursor-cross-h"></div><div class="cursor-cross-v"></div></div>
+  <div class="cursor-ring"></div>
+  <div class="scan-line"></div>
+
+  <nav>
+    <div class="nav-logo">AGN <span>// NICHOLSON</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="ethics.html">Ethics</a></li>
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Library</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="buildlog.html" class="active">Build Log</a></li>
+          <li><a href="lexicon.html">Lexicon</a></li>
+          <li><a href="origin.html">Origin</a></li>
+          <li><a href="doctrine.html">Doctrine</a></li>
+          <li><a href="reading.html">Reading</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-status">ALL SYSTEMS OPERATIONAL</div>
+  </nav>
+
+  <main class="page-wrapper" id="main-content">
+
+    <div class="page-header">
+      <div class="page-header-label">> ACCESSING MILESTONE LOG... RECORDS RETRIEVED</div>
+      <h1>BUILD <span>LOG</span></h1>
+    </div>
+
+    <div class="container">
+
+      <div class="buildlog-intro reveal">
+        <p>A record of deployments, publications, certifications, and operational achievements — in the format they deserve. Not a resume. A changelog.</p>
+      </div>
+
+      <!-- ======================================================
+           2027 — PROJECTED
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2027</div>
+
+        <div class="log-entry projected">
+          <div class="log-date">
+            <span class="log-month">MAY 2027</span>
+            PROJECTED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// ACADEMIC</div>
+            <div class="log-title">DBA — DISSERTATION & GRADUATION</div>
+            <p class="log-desc">Doctor of Business Administration, Edgewood University. Research focus: <strong>continuous improvement and the leadership behaviors that sustain it inside technical workflows.</strong> Applied directly to the same systems this work is built around improving.</p>
+            <span class="log-badge future">PROJECTED // MAY 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================
+           2026
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2026</div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">JUL 2026</span>
+            ACTIVE
+          </div>
+          <div class="log-body">
+            <div class="log-type">// DEPLOYMENT</div>
+            <div class="log-title">Safety App — Facility Expansion Begins</div>
+            <p class="log-desc">Safety Communication & Accountability App expansion to additional Dal-Tile facilities. A system proven at one site scales to the organization — <strong>accountability infrastructure deployed at enterprise level.</strong></p>
+            <span class="log-badge active">EXPANSION // IN PROGRESS</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">APR 2026</span>
+            CONFIRMED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// DEPLOYMENT // MILESTONE</div>
+            <div class="log-title">Safety Communication App — LIVE</div>
+            <p class="log-desc">Safety Communication & Accountability Application deployed at Dal-Tile Corporation. Instant, leadership-visible, accountable safety reporting. <strong>Zero data loss. Zero delay between observation and leadership awareness.</strong> First of three operational applications to reach production.</p>
+            <span class="log-badge live">LIVE // DAL-TILE CORP</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2026</span>
+            IISE CONFERENCE
+          </div>
+          <div class="log-body">
+            <div class="log-type">// PROFESSIONAL</div>
+            <div class="log-title">IISE Annual Conference — Dallas</div>
+            <p class="log-desc">Attended the Institute of Industrial and Systems Engineers Annual Conference in Dallas. Central focus: <strong>AI integration in operational and engineering practice.</strong> Active member tracking the leading edge of the discipline.</p>
+            <span class="log-badge active">ATTENDED // IISE 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================
+           2025
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2025</div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2025</span>
+            CURRENT ROLE
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CAREER</div>
+            <div class="log-title">Dal-Tile Corporation — Process Engineer</div>
+            <p class="log-desc">Return to Dal-Tile as Process Engineer. The loop closes: seventeen years of compounded experience — floor-level credibility, maintenance systems, project management, compliance, published frameworks, doctoral research — converges into designing operational improvement <strong>systematically, measurably, permanently.</strong></p>
+            <span class="log-badge active">ACTIVE // OPTIMIZING</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2025</span>
+            DEPLOYED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// DEPLOYMENT</div>
+            <div class="log-title">3D Printing Capability — In-House Manufacturing</div>
+            <p class="log-desc">Implemented in-house 3D printing capability at Dal-Tile. Reduced part costs while building internal manufacturing capacity. Operational problem-solving that no longer requires waiting on external supply chains.</p>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2025</span>
+            PUBLISHED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// PUBLICATION</div>
+            <div class="log-title">Beyond the Bottleneck — Published</div>
+            <p class="log-desc"><em>Engineering a Culture of Excellence.</em> A practitioner's framework for leaders ready to stop managing problems and start designing organizations that outgrow them. Published on Amazon. The constraint is never just the machine.</p>
+            <span class="log-badge pub">AMAZON PUBLISHING</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2025</span>
+            PUBLISHED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// PUBLICATION</div>
+            <div class="log-title">Legacy by Improvement — Published</div>
+            <p class="log-desc"><em>A Kaizen Framework for Leaders.</em> A structured kaizen framework for leaders who want to build organizations that compound — where every improvement creates the conditions for the next one. What you build should outlast your presence in it.</p>
+            <span class="log-badge pub">AMAZON PUBLISHING</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================
+           2022–2025
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2022–25</div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2022</span>
+            VALLOUREC
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CAREER // SYSTEMS BUILD</div>
+            <div class="log-title">Vallourec — Maintenance System Built From Zero</div>
+            <p class="log-desc">Entered as Maintenance Planner at Vallourec — a French multinational, world leader in premium tubular solutions. Starting condition: <strong>no formal maintenance process</strong>. Built one. SAP CMMS implementation. Led 13-technician team through full process transformation. Achieved and sustained <strong>90% PM completion rate.</strong> Progressed through Maintenance Supervisor, Project Manager, and Foreign Trade Zone Administrator simultaneously.</p>
+            <span class="log-badge pub">ZERO TO OPERATIONAL</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">DEC 2024</span>
+            CONFIRMED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CERTIFICATION // MILESTONE</div>
+            <div class="log-title">Lean Six Sigma Black Belt — Certified</div>
+            <p class="log-desc">LSS Black Belt certification obtained. The formal credential that named and systematized the improvement methodology already proven on the floor over sixteen years — DMAIC, Kaizen, root cause analysis, variation reduction. <strong>The standard matters.</strong></p>
+            <span class="log-badge pub">VALIDATED</span>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2022</span>
+            CERTIFIED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CERTIFICATION</div>
+            <div class="log-title">Google Project Management — Certified</div>
+            <p class="log-desc">Google Project Management Professional Certificate. Formalized the project architecture capability that operational experience had already proven under real-world conditions.</p>
+            <span class="log-badge pub">VALIDATED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================
+           2019–2022
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2019–22</div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2021–22</span>
+            COMPLETED
+          </div>
+          <div class="log-body">
+            <div class="log-type">// ACADEMIC</div>
+            <div class="log-title">Connors State College — AA Completed</div>
+            <p class="log-desc">Associate in Arts, completed thirteen years into an operations and maintenance career already underway. Served as Coordinator for Phi Theta Kappa, the international honor society for two-year colleges. The credential mattered enough to go back for it.</p>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2019</span>
+            TRANSITION
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CAREER</div>
+            <div class="log-title">Dal-Tile — Industrial Maintenance Technician</div>
+            <p class="log-desc">Full transition into industrial maintenance at Dal-Tile. Total ownership mindset — developed through years of accepting responsibility for both the operation and the mechanical health of equipment — propelled into formal maintenance role. Diagnosing, repairing, predicting failure. Hands on equipment.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================
+           2008
+           ====================================================== -->
+      <div class="log-year-block reveal">
+        <div class="log-year-label">2008</div>
+
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-month">2008</span>
+            INITIAL COMMIT
+          </div>
+          <div class="log-body">
+            <div class="log-type">// CAREER // INITIAL COMMIT</div>
+            <div class="log-title">Dal-Tile Corporation — Operator</div>
+            <p class="log-desc">First role: production operator at Dal-Tile Corporation, one of the largest manufacturers of ceramic tile in North America. The floor is the lab. Seventeen years of compounded improvement begin here.</p>
+            <div style="margin-top:12px;font-family:var(--font-mono);font-size:10px;color:var(--grey-dim);letter-spacing:1px;">> git init // 2008.01.01 // THE FLOOR</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end container -->
+
+    <footer>
+      <div class="footer-left">AGN // ADAM GLENN NICHOLSON // PROCESS ENGINEER</div>
+      <div class="footer-build">BUILD b4e2a9 // 2026.06.20</div>
+      <div class="footer-right">PRESS CTRL+` FOR TERMINAL</div>
+    </footer>
+
+  </main>
+
+  <div id="terminal-overlay">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span>AGN // SECURE TERMINAL</span>
+        <button class="terminal-close" id="terminal-close-btn" aria-label="Close terminal">[ CLOSE ]</button>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">AGN TERMINAL v1.0 // TYPE 'help' FOR COMMANDS</div>
+        <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">AGN://&gt;</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" />
+      </div>
+    </div>
+  </div>
+
+  <div id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <span>// AGN AI INTERFACE</span>
+        <span class="status-badge status-alpha">IN DEV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message assistant">
+          <strong>AI INTERFACE — IN DEVELOPMENT</strong><br>
+          Direct inquiries: <a href="mailto:nicholson786@gmail.com" style="color:var(--blue);">nicholson786@gmail.com</a>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="> ENTER QUERY..." aria-label="Chat message input" />
+        <button class="chat-send" id="chat-send">SEND</button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" aria-label="Toggle chat">⬡</button>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
